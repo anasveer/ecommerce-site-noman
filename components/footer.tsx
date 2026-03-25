@@ -1,0 +1,63 @@
+import React from 'react';
+import { Facebook, Instagram, Twitter, Mail } from 'lucide-react';
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#0a0f1d] border-t border-gray-800 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-[#d4af37] rounded-lg flex items-center justify-center">
+                <span className="text-[#0a0f1d] font-bold text-xl">H</span>
+              </div>
+              <span className="font-bold text-xl text-white tracking-tight uppercase">
+                Hania <span className="text-[#d4af37]">Textile</span>
+              </span>
+            </div>
+            <p className="text-gray-400 leading-relaxed">Crafting elegance for the modern home since 1998. We specialize in luxury bedding that combines traditional craftsmanship with contemporary design.</p>
+            <div className="flex gap-4">
+              <a href="#" className="p-2 bg-gray-900 rounded-full text-gray-400 hover:text-[#d4af37] transition-all"><Facebook size={20} /></a>
+              <a href="#" className="p-2 bg-gray-900 rounded-full text-gray-400 hover:text-[#d4af37] transition-all"><Instagram size={20} /></a>
+              <a href="#" className="p-2 bg-gray-900 rounded-full text-gray-400 hover:text-[#d4af37] transition-all"><Twitter size={20} /></a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 className="text-white font-bold mb-6">Quick Links</h4>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li><a href="#" className="hover:text-[#d4af37]">New Arrivals</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Best Sellers</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Bridal Collection</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Track Order</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">Customer Care</h4>
+            <ul className="space-y-4 text-gray-400 text-sm">
+              <li><a href="#" className="hover:text-[#d4af37]">Size Guide</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Shipping Policy</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Returns & Refunds</a></li>
+              <li><a href="#" className="hover:text-[#d4af37]">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">Newsletter</h4>
+            <p className="text-gray-400 text-sm mb-4">Join our mailing list for exclusive previews and VIP offers.</p>
+            <div className="flex gap-2">
+              <input type="email" placeholder="Your email" className="bg-gray-900 border border-gray-800 rounded-lg px-4 py-2 text-white w-full focus:outline-none focus:ring-1 focus:ring-[#d4af37]" />
+              <button className="bg-[#d4af37] text-[#0a0f1d] px-4 py-2 rounded-lg font-bold">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs">
+          <p>© 2024 Hania Textile Premium Bedding. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
