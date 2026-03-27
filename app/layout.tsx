@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { CartProvider } from "../context/CartContext";
 
 
 
@@ -28,9 +29,11 @@ export default function RootLayout({
         />
       </head>
       <body className='font-nunito'>
-        <Navbar />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

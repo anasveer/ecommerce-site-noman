@@ -7,12 +7,12 @@ import { LayoutDashboard, PlusSquare, Package2, ShoppingBag } from "lucide-react
 const menuItems = [
   {
     title: "Dashboard",
-    href: "/admin/dashboard",
+    href: "/dashboard",
     icon: LayoutDashboard,
   },
    {
     title: "Orders",
-    href: "/admin/orders",
+    href: "/dashboard/orders",
     icon: ShoppingBag,
   },
   {

@@ -1,3 +1,4 @@
+import "server-only";
 import mongoose, { Schema, model, models } from "mongoose";
 
 const ProductImageSchema = new Schema({
