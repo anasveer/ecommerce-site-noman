@@ -15,6 +15,7 @@ export default function EditProductPage() {
 
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
+  const [barcode, setBarcode] = useState("");
   const [mainCategory, setMainCategory] = useState<"fabric" | "bedsheet">("fabric");
   const [subCategory, setSubCategory] = useState("");
   const [images, setImages] = useState<UploadedImage[]>([]);
@@ -27,6 +28,7 @@ export default function EditProductPage() {
 
       setTitle(data.product.title);
       setPrice(String(data.product.price));
+      setBarcode(data.product.barcode);
       setMainCategory(data.product.mainCategory);
       setSubCategory(data.product.subCategory || "");
       setImages(data.product.images || []);
@@ -47,6 +49,7 @@ export default function EditProductPage() {
       body: JSON.stringify({
         title,
         price,
+        barcode,
         mainCategory,
         subCategory,
         images,
@@ -56,7 +59,7 @@ export default function EditProductPage() {
     setLoading(false);
 
     if (res.ok) {
-      router.push("/admin/all-products");
+      router.push("/dashboard/all-products");
     } else {
       alert("Failed to update product");
     }
@@ -64,7 +67,7 @@ export default function EditProductPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-slate-900">Edit Product</h1>
+      <h1 className="text-3xl font-bold text-black">Edit Product</h1>
 
       <form
         onSubmit={handleSubmit}
@@ -74,7 +77,7 @@ export default function EditProductPage() {
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="h-12 rounded-2xl border border-slate-300 px-4"
+            className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
             placeholder="Title"
           />
 
@@ -82,8 +85,15 @@ export default function EditProductPage() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             type="number"
-            className="h-12 rounded-2xl border border-slate-300 px-4"
+            className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
             placeholder="Price"
+          />
+
+          <input
+            value={barcode}
+            onChange={(e) => setBarcode(e.target.value)}
+            className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
+            placeholder="Barcode"
           />
 
           <select
@@ -92,7 +102,7 @@ export default function EditProductPage() {
               setMainCategory(e.target.value as "fabric" | "bedsheet");
               setSubCategory("");
             }}
-            className="h-12 rounded-2xl border border-slate-300 px-4"
+            className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
           >
             <option value="fabric">Fabric</option>
             <option value="bedsheet">Bedsheet</option>
@@ -102,7 +112,7 @@ export default function EditProductPage() {
             <select
               value={subCategory}
               onChange={(e) => setSubCategory(e.target.value)}
-              className="h-12 rounded-2xl border border-slate-300 px-4"
+              className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
             >
               <option value="">Select subcategory</option>
               {BEDSHEET_SUBCATEGORIES.map((item) => (

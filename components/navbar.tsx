@@ -23,16 +23,20 @@ const Navbar = () => {
     }
   };
 
-  const hideNavbar = pathname === '/login' || pathname === '/dashboard';
+  const hideNavbar = pathname === '/login' || pathname.startsWith('/dashboard');
   if (hideNavbar) return null;
 
   const categories = [
-    { name: 'Fabrics', icon: <FaCouch className="h-5 w-5" />, href: '#' },
-    { name: 'Bedsheets', icon: <FaBed className="h-5 w-5" />, href: '#' },
+    { name: 'Fabrics', icon: <FaCouch className="h-5 w-5" />, href: '/category/fabric', sub: [] },
+    { name: 'Bedsheets', icon: <FaBed className="h-5 w-5" />, href: '#', sub: [
+      { name: 'Comforter Set', href: '/category/bedsheet/comforter-set', icon: <FaBed className="h-4 w-4" /> },
+      { name: '3 Pcs Bedsheet', href: '/category/bedsheet/3pcs-bedsheet', icon: <FaBed className="h-4 w-4" /> },
+      { name: 'Single Pair Bedsheet', href: '/category/bedsheet/single-pair-bedsheet', icon: <FaBed className="h-4 w-4" /> },
+    ] },
   ];
 
   return (
-    <nav className="bg-[#0a0f1d] text-white sticky top-0 z-50 border-b border-gray-800 font-sans">
+    <nav className="bg-[#0a0f1d] text-white fixed top-0 left-0 right-0 z-50 border-b border-gray-800 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -43,7 +47,7 @@ const Navbar = () => {
               </div>
               <div className="flex flex-col leading-tight">
                 <span className="font-extrabold text-xl sm:text-2xl tracking-tighter uppercase italic">
-                  Hania <span className="text-[#d4af37] font-light">Amir</span>
+                  Universal <span className="text-[#d4af37] font-light">Bedding</span>
                 </span>
                 <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
                   Premium Collections
@@ -54,7 +58,7 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
-            <a href="#" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">
+            <a href="/" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">
               Home
             </a>
             <div className="relative group">
@@ -64,15 +68,27 @@ const Navbar = () => {
               <div className="absolute left-0 mt-1 w-56 bg-[#0d1425] border border-gray-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
                 <div className="p-2">
                   {categories.map((cat) => (
-                    <a key={cat.name} href={cat.href} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:text-[#d4af37] hover:bg-white/5 rounded-lg transition-colors">
-                      <span className="text-[#d4af37] bg-[#d4af37]/10 p-2 rounded-lg">{cat.icon}</span>
-                      <span className="font-medium">{cat.name}</span>
-                    </a>
+                    <div key={cat.name}>
+                      <a href={cat.href} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:text-[#d4af37] hover:bg-white/5 rounded-lg transition-colors">
+                        <span className="text-[#d4af37] bg-[#d4af37]/10 p-2 rounded-lg">{cat.icon}</span>
+                        <span className="font-medium">{cat.name}</span>
+                      </a>
+                      {cat.sub && cat.sub.length > 0 && (
+                        <div className="ml-8 mt-1 space-y-1">
+                          {cat.sub.map((sub) => (
+                            <a key={sub.name} href={sub.href} className="flex items-center gap-2 px-4 py-2 text-xs text-gray-400 hover:text-[#d4af37] hover:bg-white/5 rounded-lg transition-colors">
+                              <span className="text-[#d4af37]">{sub.icon}</span>
+                              <span>{sub.name}</span>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
-            <a href="#" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">About</a>
+            <a href="/my-orders" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">My Orders</a>
             <a href="#" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">Contact</a>
           </div>
 
@@ -155,12 +171,24 @@ const Navbar = () => {
                 Collections
                 <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180' : ''}`} />
               </button>
-              <div className={`overflow-hidden transition-all duration-300 ${isCategoryOpen ? 'max-h-48' : 'max-h-0'}`}>
+              <div className={`overflow-hidden transition-all duration-300 ${isCategoryOpen ? 'max-h-96' : 'max-h-0'}`}>
                 {categories.map((cat) => (
-                  <a key={cat.name} href={cat.href} className="flex items-center gap-4 px-8 py-3 text-gray-400 hover:text-[#d4af37] transition-colors">
-                    <span className="p-2 bg-gray-900 rounded-lg">{cat.icon}</span>
-                    {cat.name}
-                  </a>
+                  <div key={cat.name}>
+                    <a href={cat.href} className="flex items-center gap-4 px-8 py-3 text-gray-400 hover:text-[#d4af37] transition-colors">
+                      <span className="p-2 bg-gray-900 rounded-lg">{cat.icon}</span>
+                      {cat.name}
+                    </a>
+                    {cat.sub && cat.sub.length > 0 && (
+                      <div className="ml-12 space-y-1">
+                        {cat.sub.map((sub) => (
+                          <a key={sub.name} href={sub.href} className="flex items-center gap-3 px-8 py-2 text-sm text-gray-500 hover:text-[#d4af37] transition-colors">
+                            <span className="text-[#d4af37]">{sub.icon}</span>
+                            {sub.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

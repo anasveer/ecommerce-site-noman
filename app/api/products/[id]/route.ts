@@ -41,6 +41,7 @@ export async function PATCH(
     title: body.title,
     slug: slugify(body.title),
     price: Number(body.price),
+    barcode: body.barcode,
     mainCategory: body.mainCategory,
     subCategory:
       body.mainCategory === "bedsheet" ? body.subCategory || "" : "",

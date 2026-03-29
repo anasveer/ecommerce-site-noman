@@ -28,18 +28,21 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>([]);
 
+  const email = typeof window !== 'undefined' ? localStorage.getItem('user-email') : null;
+  const cartKey = email ? `cart-${email}` : 'hania-cart';
+
   // Load from localStorage on mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('hania-cart');
+      const saved = localStorage.getItem(cartKey);
       if (saved) setItems(JSON.parse(saved));
     } catch {}
-  }, []);
+  }, [cartKey]);
 
   // Save to localStorage whenever items change
   useEffect(() => {
-    localStorage.setItem('hania-cart', JSON.stringify(items));
-  }, [items]);
+    localStorage.setItem(cartKey, JSON.stringify(items));
+  }, [items, cartKey]);
 
   const addToCart = (item: CartItem) => {
     setItems(prev => {

@@ -5,25 +5,25 @@ export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const token = req.cookies.get("admin_session")?.value;
 
-  const isDashboardRoute = pathname.startsWith("/admin/dashboard");
-  const isLoginRoute = pathname.startsWith("/admin/login");
+  const isDashboardRoute = pathname.startsWith("/dashboard");
+  const isLoginRoute = pathname.startsWith("/login");
 
   if (isDashboardRoute) {
     if (!token) {
-      return NextResponse.redirect(new URL("/admin/login", req.url));
+      return NextResponse.redirect(new URL("/login", req.url));
     }
 
     const payload = await verifySessionToken(token);
 
     if (!payload) {
-      return NextResponse.redirect(new URL("/admin/login", req.url));
+      return NextResponse.redirect(new URL("/login", req.url));
     }
   }
 
   if (isLoginRoute && token) {
     const payload = await verifySessionToken(token);
     if (payload) {
-      return NextResponse.redirect(new URL("/admin/dashboard", req.url));
+      return NextResponse.redirect(new URL("/dashboard", req.url));
     }
   }
 

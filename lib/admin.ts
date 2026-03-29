@@ -1,14 +1,11 @@
-import { getDb } from "./mongodb";
+import mongoose, { Schema, models, model } from "mongoose";
 
-export type AdminUser = {
-  _id?: string;
-  email: string;
-  password: string;
-  role: "admin";
-  createdAt: Date;
-};
+const AdminSchema = new Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
+  role: { type: String, default: "admin" },
+  createdAt: { type: Date, default: Date.now },
+});
 
-export async function getAdminCollection() {
-  const db = await getDb();
-  return db.collection<AdminUser>("admins");
-}
+export const Admin =
+  models.Admin || model("Admin", AdminSchema);

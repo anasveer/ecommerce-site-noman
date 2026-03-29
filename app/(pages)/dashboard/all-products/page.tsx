@@ -8,6 +8,7 @@ type Product = {
   _id: string;
   title: string;
   price: number;
+  barcode: string;
   mainCategory: string;
   subCategory?: string;
   images: { url: string }[];
@@ -52,7 +53,7 @@ export default function AllProductsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-slate-900">All Products</h1>
+      <h1 className="text-3xl font-bold text-black">All Products</h1>
 
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         <select
@@ -61,7 +62,7 @@ export default function AllProductsPage() {
             setMainCategory(e.target.value);
             setSubCategory("");
           }}
-          className="h-12 rounded-2xl border border-slate-300 px-4 text-gray-600"
+          className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
         >
           <option value="">All Main Categories</option>
           <option value="fabric">Fabric</option>
@@ -72,7 +73,7 @@ export default function AllProductsPage() {
           value={subCategory}
           onChange={(e) => setSubCategory(e.target.value)}
           disabled={mainCategory !== "bedsheet"}
-          className="h-12 rounded-2xl border border-slate-300 px-4 text-gray-600"
+          className="h-12 rounded-2xl border border-slate-300 px-4 text-black"
         >
           <option value="">All Bedsheet Categories</option>
           {BEDSHEET_SUBCATEGORIES.map((item) => (
@@ -89,6 +90,7 @@ export default function AllProductsPage() {
             <tr>
               <th className="px-5 py-4">Image</th>
               <th className="px-5 py-4">Title</th>
+              <th className="px-5 py-4">Barcode</th>
               <th className="px-5 py-4">Price</th>
               <th className="px-5 py-4">Main</th>
               <th className="px-5 py-4">Sub</th>
@@ -108,13 +110,14 @@ export default function AllProductsPage() {
                 <td className="px-5 py-4 font-medium text-slate-800">
                   {product.title}
                 </td>
+                <td className="px-5 py-4">{product.barcode}</td>
                 <td className="px-5 py-4">Rs. {product.price}</td>
                 <td className="px-5 py-4 capitalize">{product.mainCategory}</td>
                 <td className="px-5 py-4 capitalize">{product.subCategory || "-"}</td>
                 <td className="px-5 py-4">
                   <div className="flex gap-3">
                     <Link
-                      href={`/admin/edit-product/${product._id}`}
+                      href={`/dashboard/edit-product/${product._id}`}
                       className="rounded-xl bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700"
                     >
                       Edit
@@ -131,7 +134,7 @@ export default function AllProductsPage() {
             ))}
             {!products.length && (
               <tr>
-                <td colSpan={6} className="px-5 py-10 text-center text-slate-500">
+                <td colSpan={7} className="px-5 py-10 text-center text-slate-500">
                   No products found
                 </td>
               </tr>

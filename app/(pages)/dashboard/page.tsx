@@ -22,13 +22,19 @@ type Order = {
 const DashboardPage = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [productsCount, setProductsCount] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
-    try {
-      const savedOrders = localStorage.getItem('hania-orders');
-      setOrders(savedOrders ? JSON.parse(savedOrders) : []);
-    } catch {
-      setOrders([]);
+    async function loadOrders() {
+      try {
+        const res = await fetch('/api/orders');
+        if (res.ok) {
+          const data = await res.json();
+          setOrders(data);
+        }
+      } catch {
+        setOrders([]);
+      }
     }
 
     async function loadProductsCount() {
@@ -43,6 +49,7 @@ const DashboardPage = () => {
       }
     }
 
+    loadOrders();
     loadProductsCount();
   }, []);
 
@@ -65,6 +72,21 @@ const DashboardPage = () => {
     });
     return totals;
   }, [orders]);
+
+  const allCategories = useMemo(() => {
+    const cats = new Set<string>();
+    orders.forEach(order => order.items.forEach(item => cats.add(item.subCategory || item.mainCategory || 'Unknown')));
+    return Array.from(cats).sort();
+  }, [orders]);
+
+  const filteredCategorySales = useMemo(() => {
+    if (selectedCategory === 'all') return categorySales;
+    const filtered: Record<string, number> = {};
+    if (categorySales[selectedCategory]) filtered[selectedCategory] = categorySales[selectedCategory];
+    return filtered;
+  }, [categorySales, selectedCategory]);
+
+  const overallTotal = useMemo(() => Object.values(categorySales).reduce((sum, val) => sum + val, 0), [categorySales]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#111827] to-[#0a0f1d] py-10 px-4 text-white">
@@ -94,16 +116,30 @@ const DashboardPage = () => {
         </div>
 
         <div className=" rounded-2xl border border-blue-400/20 bg-white/10 p-5">
-          <h2 className="text-lg font-semibold">Products</h2>
+          <h2 className="text-lg font-semibold">Total Products</h2>
           <p className="text-2xl font-bold">{productsCount}</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <div className="rounded-2xl border border-blue-400/20 bg-white/10 p-5">
             <h3 className="text-lg font-semibold mb-3">Category Sales (Completed)</h3>
-            {Object.entries(categorySales).length ? (
-              <ul className="space-y-2 text-sm">
-                {Object.entries(categorySales).map(([cat, value]) => (
+            <div className="mb-3">
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-black"
+              >
+                <option value="all">All Categories</option>
+                {allCategories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {Object.entries(filteredCategorySales).length ? (
+              <ul className="space-y-2 text-sm mb-3">
+                {Object.entries(filteredCategorySales).map(([cat, value]) => (
                   <li key={cat} className="flex justify-between">
                     <span>{cat}</span>
                     <span>Rs. {value}</span>
@@ -111,8 +147,12 @@ const DashboardPage = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-slate-400">No completed sales yet.</p>
+              <p className="text-slate-400 mb-3">No sales for selected category.</p>
             )}
+            <div className="border-t border-slate-600 pt-3">
+              <p className="text-sm text-slate-300">Selected Total: Rs. {Object.values(filteredCategorySales).reduce((sum, val) => sum + val, 0)}</p>
+              <p className="text-lg font-bold text-white">Overall Total Sales: Rs. {overallTotal}</p>
+            </div>
           </div>
 
           <div className="rounded-2xl border border-blue-400/20 bg-white/10 p-5">
@@ -120,7 +160,7 @@ const DashboardPage = () => {
             <div className="grid gap-2">
               <Link href="/dashboard/orders" className="rounded-lg bg-blue-500 px-4 py-2 font-medium text-white">Go to Orders</Link>
               <Link href="/dashboard/all-products" className="rounded-lg bg-emerald-500 px-4 py-2 font-medium text-white">Go to Products</Link>
-              <Link href="/cart" className="rounded-lg bg-slate-600 px-4 py-2 font-medium text-white">Open Cart</Link>
+              
             </div>
           </div>
         </div>

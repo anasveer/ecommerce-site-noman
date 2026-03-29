@@ -1,14 +1,20 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { getAdminCollection } from "@/lib/admin";
+import { Admin } from "@/lib/admin";
+import { dbConnect } from "@/lib/mongodb";
 import { createSessionToken } from "@/lib/auth";
 
 export async function POST(req: Request) {
   try {
+    // ✅ DB connect
+    await dbConnect();
+
+    // ✅ Body parse
     const body = await req.json();
     const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
 
+    // ✅ Validation
     if (!email || !password) {
       return NextResponse.json(
         { success: false, message: "Email and password are required" },
@@ -16,8 +22,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const admins = await getAdminCollection();
-    const admin = await admins.findOne({ email });
+    // ✅ Find admin (correct way)
+    const admin = await Admin.findOne({ email }).lean();
 
     if (!admin) {
       return NextResponse.json(
@@ -26,6 +32,7 @@ export async function POST(req: Request) {
       );
     }
 
+    // ✅ Compare password
     const isValid = await bcrypt.compare(password, admin.password);
 
     if (!isValid) {
@@ -35,18 +42,21 @@ export async function POST(req: Request) {
       );
     }
 
+    // ✅ Create token
     const token = await createSessionToken({
       userId: String(admin._id),
       email: admin.email,
       role: admin.role,
     });
 
+    // ✅ Response
     const response = NextResponse.json({
       success: true,
       message: "Login successful",
       redirectTo: "/dashboard",
     });
 
+    // ✅ Cookie set
     response.cookies.set("admin_session", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -58,6 +68,7 @@ export async function POST(req: Request) {
     return response;
   } catch (error) {
     console.error("LOGIN_ERROR", error);
+
     return NextResponse.json(
       { success: false, message: "Something went wrong" },
       { status: 500 }

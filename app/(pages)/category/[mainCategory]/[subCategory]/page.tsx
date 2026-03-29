@@ -42,7 +42,7 @@ export default async function CategoryPage({ params }: PageProps) {
   const products: Product[] = await getProducts(mainCategory, subCategory);
 
   return (
-    <section className="min-h-screen py-20 bg-[#0a0f1d]">
+    <section className="min-h-screen py-32 bg-[#0a0f1d]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-12">
           <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-bold mb-3">

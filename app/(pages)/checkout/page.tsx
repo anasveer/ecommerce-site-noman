@@ -41,21 +41,38 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (items.length === 0) {
-      router.push('/cart');
+      router.push('/my-orders');
     }
   }, [items.length, router]);
 
-  const saveOrder = (order: any) => {
+  const saveOrder = async (order: any) => {
     try {
-      const existing = localStorage.getItem('hania-orders');
-      const arr = existing ? JSON.parse(existing) : [];
-      localStorage.setItem('hania-orders', JSON.stringify([...arr, order]));
-    } catch (e) {
-      console.error('Order save failed', e);
+      console.log('Saving order:', JSON.stringify(order, null, 2));
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order),
+      });
+      
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('API Error:', errorData);
+        throw new Error(errorData.details || 'Failed to save order');
+      }
+      
+      // Store email in localStorage for my-orders page
+      localStorage.setItem('user-email', order.user.email);
+      console.log('Order saved successfully');
+      return true;
+    } catch (error) {
+      console.error('Failed to save order:', error);
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+      alert(`Order placed but failed to save: ${errorMsg}`);
+      return false;
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!form.fullName || !form.email || !form.phone || !form.city || !form.address) {
@@ -68,7 +85,25 @@ export default function CheckoutPage() {
       return;
     }
 
-    const screenshotData = screenshotPreview || null;
+    let paymentScreenshotUrl = null;
+    if (screenshotPreview) {
+      try {
+        const uploadRes = await fetch('/api/upload-payment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ base64Data: screenshotPreview }),
+        });
+        if (!uploadRes.ok) {
+          throw new Error('Upload failed');
+        }
+        const uploadData = await uploadRes.json();
+        paymentScreenshotUrl = uploadData.url;
+      } catch (uploadError) {
+        console.error('Screenshot upload failed:', uploadError);
+        setError('Failed to upload payment screenshot. Please try again.');
+        return;
+      }
+    }
 
     const order = {
       id: `ORD-${Date.now()}`,
@@ -83,14 +118,17 @@ export default function CheckoutPage() {
       amountPayable: totalWithShipping,
       paymentMode: form.payment === 'cod' ? 'Cash on Delivery' : 'Advance (Bank Transfer)',
       paymentInfo: form.payment === 'advance' ? 'Bank: Hania Bank | IBAN: PK00HANIA1234567890' : 'Pay on delivery',
-      paymentScreenshot: screenshotData,
+      paymentScreenshot: paymentScreenshotUrl,
       status: 'pending' as OrderStatus,
       createdAt: new Date().toISOString(),
     };
 
-    saveOrder(order);
-    clearCart();
-    router.push('/dashboard/orders');
+    const success = await saveOrder(order);
+    if (success) {
+      clearCart();
+      alert('Order placed successfully!');
+      router.push('/my-orders');
+    }
   };
 
   return (
