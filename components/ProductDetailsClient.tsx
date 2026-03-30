@@ -46,7 +46,7 @@ export default function ProductDetailsClient({ product, relatedColors, content }
   };
 
   return (
-    <section className="min-h-screen py-16 bg-[#0a0f1d] text-white">
+    <section className="min-h-screen py-16 bg-[#0a0f1d] text-white mt-20">
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10">
         <div className="rounded-3xl border border-gray-800 overflow-hidden bg-[#0f172a]">
           <img src={product.images?.[0]?.url} alt={product.title} className="w-full h-[500px] object-cover" />
@@ -108,7 +108,13 @@ export default function ProductDetailsClient({ product, relatedColors, content }
                 Add to Cart
               </div>
             </button>
-            <button className="flex-1 border border-gray-700 h-14 rounded-2xl font-bold hover:bg-white/5 transition-colors">
+            <button
+              onClick={() => {
+                const message = `Hi, I want to order: ${product.title} - Image: ${product.images?.[0]?.url} - ${window.location.href}`;
+                window.open(`https://wa.me/923218719472?text=${encodeURIComponent(message)}`, '_blank');
+              }}
+              className="flex-1 border border-gray-700 h-14 rounded-2xl font-bold hover:bg-white/5 transition-colors"
+            >
               WhatsApp Order
             </button>
           </div>

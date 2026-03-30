@@ -58,11 +58,11 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
-            <a href="/" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">
+            <a href="/" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>
               Home
             </a>
             <div className="relative group">
-              <button className="flex items-center gap-1 text-gray-300 group-hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200">
+              <button className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 ${pathname.startsWith("/category") ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 group-hover:text-[#d4af37]"}`}>
                 Collections <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
               <div className="absolute left-0 mt-1 w-56 bg-[#0d1425] border border-gray-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
@@ -88,8 +88,8 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <a href="/my-orders" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">My Orders</a>
-            <a href="#" className="text-gray-300 hover:text-[#d4af37] px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5">Contact</a>
+            <a href="/my-orders" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/my-orders" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>My Orders</a>
+            <a href="/cart" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/cart" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>View Cart</a>
           </div>
 
           {/* Search Bar */}

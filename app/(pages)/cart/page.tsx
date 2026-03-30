@@ -22,7 +22,7 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0f1d] text-white py-16 px-4">
+    <div className="min-h-screen bg-[#0a0f1d] text-white py-16 px-4 mt-20">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">Cart</h1>
 

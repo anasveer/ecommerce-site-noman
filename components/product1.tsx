@@ -47,15 +47,18 @@ export default async function ProductSection() {
             </p>
           </div>
 
-          <Link
-            href="/category/bedsheet/3pcs-bedsheet"
-            className="text-[#d4af37] text-sm font-semibold hover:underline"
-          >
-            View All Products →
-          </Link>
+          <div className="flex gap-4">
+            <Link
+              href="/category/bedsheet/3pcs-bedsheet"
+              className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+            >
+              View 3pcs Bedsheet
+              <span className="inline-block ml-2 arrow-shift">→</span>
+            </Link>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

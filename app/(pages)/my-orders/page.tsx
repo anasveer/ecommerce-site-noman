@@ -146,6 +146,7 @@ export default function MyOrdersPage() {
 
                 <div>
                   <h3 className="text-sm font-semibold text-slate-900 mb-2">Payment</h3>
+                  <p className="text-sm text-slate-800">Order ID: {order.id}</p>
                   <p className="text-sm text-slate-800">Mode: {order.paymentMode}</p>
                   <p className="text-sm text-slate-800">Subtotal: Rs. {order.total}</p>
                   <p className="text-sm text-slate-800">Shipping: Rs. {order.shippingCost}</p>
@@ -158,9 +159,6 @@ export default function MyOrdersPage() {
                   <thead>
                     <tr className="border-b border-slate-200">
                       <th className="py-2">Product</th>
-                      <th className="py-2">Barcode</th>
-                      <th className="py-2">Qty</th>
-                      <th className="py-2">Price</th>
                       <th className="py-2">Total</th>
                     </tr>
                   </thead>
@@ -171,12 +169,11 @@ export default function MyOrdersPage() {
                           <img src={item.image} alt={item.title} className="h-10 w-10 object-cover rounded" />
                           <div>
                             <div>{item.title}</div>
+                            <div className="text-xs text-slate-700">Barcode: {item.barcode || 'N/A'}</div>
+                            <div className="text-xs text-slate-700">Qty: {item.quantity} | Price: Rs. {item.price}</div>
                             <div className="text-xs text-slate-700">{item.mainCategory || 'Unknown'} / {item.subCategory || 'Unknown'}</div>
                           </div>
                         </td>
-                        <td className="py-2">{item.barcode || 'N/A'}</td>
-                        <td className="py-2">{item.quantity}</td>
-                        <td className="py-2">Rs. {item.price}</td>
                         <td className="py-2">Rs. {item.price * item.quantity}</td>
                       </tr>
                     ))}

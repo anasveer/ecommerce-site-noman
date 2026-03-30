@@ -17,7 +17,14 @@ body {
    font-family: 'Nunito', sans-serif;
 }
 
+@keyframes arrowShift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
 
+.arrow-shift {
+  animation: arrowShift 1.6s ease-in-out infinite;
+}
 
 
 

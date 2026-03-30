@@ -39,19 +39,19 @@ export default async function ProductSectionSinglePair() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-2">
-              Single Pair Bedsheet <span className="text-[#d4af37]">Now</span>
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e8b2] to-[#b08c2e] mb-2">
+              Single Pair Bedsheet <span className="text-[#d4af37]">Edition</span>
             </h2>
-            <p className="text-gray-400">
-              Explore our latest Single Pair Bedsheet collection
+            <p className="text-gray-300 max-w-xl">
+              Experience premium 3D crystal cotton for extraordinary softness.
             </p>
           </div>
 
           <Link
             href="/category/bedsheet/single-pair-bedsheet"
-            className="text-[#d4af37] text-sm font-semibold hover:underline"
+            className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
           >
-            View All Products →
+            View Single Pair Bedsheet <span className="inline-block ml-2 arrow-shift">→</span>
           </Link>
         </div>
 

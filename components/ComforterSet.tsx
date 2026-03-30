@@ -49,9 +49,9 @@ export default async function ProductSectionComforterSet() {
 
           <Link
             href="/category/bedsheet/comforter-set"
-            className="text-[#d4af37] text-sm font-semibold hover:underline"
+            className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
           >
-            View All Products →
+            View Comforter Set <span className="inline-block ml-2 arrow-shift">→</span>
           </Link>
         </div>
 

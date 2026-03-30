@@ -126,7 +126,7 @@ export default function CheckoutPage() {
     const success = await saveOrder(order);
     if (success) {
       clearCart();
-      alert('Order placed successfully!');
+      alert(`Order placed successfully! Your Order ID is ${order.id}`);
       router.push('/my-orders');
     }
   };
