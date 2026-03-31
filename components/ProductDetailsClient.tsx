@@ -27,7 +27,7 @@ interface ProductDetailsClientProps {
 export default function ProductDetailsClient({ product, relatedColors, content }: ProductDetailsClientProps) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
-  const { addToCart } = useCart();
+  const { addToCart, items } = useCart();
 
   const handleAddToCart = () => {
     addToCart({
@@ -113,7 +113,7 @@ export default function ProductDetailsClient({ product, relatedColors, content }
                 const message = `Hi, I want to order: ${product.title} - Image: ${product.images?.[0]?.url} - ${window.location.href}`;
                 window.open(`https://wa.me/923218719472?text=${encodeURIComponent(message)}`, '_blank');
               }}
-              className="flex-1 border border-gray-700 h-14 rounded-2xl font-bold hover:bg-white/5 transition-colors"
+              className="flex-1 border border-gray-700 h-14 rounded-2xl font-bold bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300"
             >
               WhatsApp Order
             </button>
@@ -121,6 +121,15 @@ export default function ProductDetailsClient({ product, relatedColors, content }
 
           {added && (
             <div className="text-green-300 font-semibold pt-2">Added to cart (x{quantity})</div>
+          )}
+
+          {items.length > 0 && (
+            <Link href="/cart">
+              <button className="relative overflow-hidden w-full bg-gradient-to-r from-gray-800 to-[#d4af37] text-white h-14 rounded-2xl font-bold hover:scale-[1.02] transition-transform mt-4">
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[shine_2s_ease-in-out_infinite]"></span>
+                <span className="relative z-10">View Cart</span>
+              </button>
+            </Link>
           )}
 
           {content && (

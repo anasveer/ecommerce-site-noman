@@ -75,10 +75,10 @@ const CartPage = () => {
               <p className="text-3xl font-bold text-[#d4af37]">Rs. {totalPrice}</p>
             </div>
             <div className="flex gap-4 items-center">
-              <Link href="/" className="px-6 py-3 border border-gray-700 rounded-2xl font-bold hover:bg-white/5 transition-colors">
+              <Link href="/" className="px-6 py-3 border border-gray-700 rounded-2xl font-bold bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300">
                 Continue Shopping
               </Link>
-              <Link href="/checkout" className="px-6 py-3 rounded-2xl font-bold bg-[#3b82f6] text-white hover:opacity-90 transition-opacity">
+              <Link href="/checkout" className="px-6 py-3 rounded-2xl font-bold bg-[#d4af37] text-black hover:opacity-90 transition-opacity">
                 Proceed to Checkout
               </Link>
             </div>

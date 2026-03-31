@@ -22,6 +22,11 @@ body {
   50% { transform: translateX(6px); }
 }
 
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 .arrow-shift {
   animation: arrowShift 1.6s ease-in-out infinite;
 }

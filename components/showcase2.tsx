@@ -68,7 +68,7 @@ const QualityShowcase = () => {
           <div className="flex-1 space-y-10">
             <div className="space-y-4">
               <span className="text-[#d4af37] text-xs font-bold tracking-[0.4em] uppercase">3D Crystal Cotton Premium</span>
-              <h2 className="text-5xl font-extrabold text-white leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
                 Single Pair Bedsheet <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f1d592]">
                   Elite Comfort & Crystal Softness

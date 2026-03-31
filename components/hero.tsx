@@ -15,7 +15,7 @@ const slides = [
   },
   {
     image:
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&q=80&w=1974',
+      'hero1.jpg',
     alt: 'Luxury Bedding 3',
   },
 ];
@@ -32,7 +32,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="relative h-[90vh] w-full overflow-hidden bg-[#0a0f1d]">
+    <section className="relative h-[90vh] w-full overflow-hidden bg-[#0a0f1d] ">
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <img
@@ -47,11 +47,15 @@ const HeroSlider = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1d] via-[#0a0f1d]/40 to-transparent"></div>
       </div>
 
-      <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center">
+      <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center mt-5">
         <div className="max-w-2xl animate-in fade-in slide-in-from-left-8 duration-1000">
-          <span className="inline-block px-3 py-1 rounded bg-[#1152d4]/20 text-[#1152d4] text-xs font-bold tracking-widest uppercase mb-4 border border-[#1152d4]/30">
-            New Arrival 2024
-          </span>
+         <span className="relative overflow-hidden inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-[#bf9b30] via-[#f5e8b2] to-[#bf9b30] text-[#423105] text-xs font-extrabold tracking-widest uppercase mb-4 border border-[#d4af37]/50 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+  {/* Shimmer Effect Layer */}
+  <span className="animate-shine absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent" />
+  
+  {/* Text (Text ko relative rakha hai taakay shimmer iske neechay se guzray) */}
+  <span className="relative z-10">New Arrival 2026</span>
+</span>
 
           <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
             Royal <span className="text-[#d4af37] italic">Silk</span> & <br /> Velvet Comfort
