@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { CartProvider } from "../context/CartContext";
-
+import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 
 export const metadata: Metadata = {
@@ -32,6 +32,7 @@ export default function RootLayout({
         <CartProvider>
           <Navbar />
           {children}
+          <WhatsAppFloat />
           <Footer />
         </CartProvider>
       </body>

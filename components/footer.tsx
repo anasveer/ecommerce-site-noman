@@ -15,7 +15,7 @@ const Footer = () => {
                 Hania <span className="text-[#d4af37]">Textile</span>
               </span>
             </div>
-            <p className="text-gray-400 leading-relaxed">Crafting elegance for the modern home since 1998. We specialize in luxury bedding that combines traditional craftsmanship with contemporary design.</p>
+            <p className="text-gray-400 leading-relaxed">Crafting elegance for the modern home since 2022. We specialize in luxury bedding that combines traditional craftsmanship with contemporary design.</p>
             <div className="flex gap-4">
               <a href="#" className="p-2 bg-gray-900 rounded-full text-gray-400 hover:text-[#d4af37] transition-all"><Facebook size={20} /></a>
               <a href="#" className="p-2 bg-gray-900 rounded-full text-gray-400 hover:text-[#d4af37] transition-all"><Instagram size={20} /></a>
@@ -26,10 +26,10 @@ const Footer = () => {
           <div>
             <h4 className="text-white font-bold mb-6">Quick Links</h4>
             <ul className="space-y-4 text-gray-400 text-sm">
-              <li><a href="#" className="hover:text-[#d4af37]">New Arrivals</a></li>
-              <li><a href="#" className="hover:text-[#d4af37]">Best Sellers</a></li>
-              <li><a href="#" className="hover:text-[#d4af37]">Bridal Collection</a></li>
-              <li><a href="#" className="hover:text-[#d4af37]">Track Order</a></li>
+              <li><a href="/category/bedsheet/3pcs-bedsheet" className="hover:text-[#d4af37]">3pcs Bedsheet</a></li>
+              <li><a href="/category/bedsheet/comforter-set" className="hover:text-[#d4af37]">Comforter Set</a></li>
+              <li><a href="/category/bedsheet/single-pair-bedsheet" className="hover:text-[#d4af37]">Single Pair Bedsheet</a></li>
+              <li><a href="/my-orders" className="hover:text-[#d4af37]">My Order</a></li>
             </ul>
           </div>
 
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs">
-          <p>© 2024 Hania Textile Premium Bedding. All Rights Reserved.</p>
+          <p>© 2022 Universal Premium Bedding. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

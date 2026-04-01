@@ -7,6 +7,7 @@ import Fabric from "../components/ComforterSet";
 import Showcase2 from "../components/showcase2";
 import Singal from "../components/SinglePair";
 import DigitalArtistryShowcase from "../components/pixel";
+import Room from "../components/room";
 import Look from "../components/look";
 import Quality from "../components/quality";
 
@@ -21,6 +22,7 @@ const page = () => {
       <Showcase2/>
       <Singal/>
       <DigitalArtistryShowcase/>
+      <Room/>
         <Look/>
       <Quality/>
     </div>

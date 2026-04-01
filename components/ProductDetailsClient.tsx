@@ -52,11 +52,11 @@ export default function ProductDetailsClient({ product, relatedColors, content }
           <img src={product.images?.[0]?.url} alt={product.title} className="w-full h-[500px] object-cover" />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-5">
           <span className="text-[#d4af37] text-xs font-bold tracking-widest uppercase bg-[#d4af37]/10 px-3 py-1 rounded-full">
             Code: {product.barcode}
           </span>
-          <h1 className="text-4xl font-extrabold">{product.title}</h1>
+          <h1 className="text-4xl font-extrabold mt-2">{product.title}</h1>
           <p className="text-3xl font-bold text-[#d4af37]">Rs. {product.price}</p>
 
           <div className="flex items-center gap-4">
@@ -84,9 +84,12 @@ export default function ProductDetailsClient({ product, relatedColors, content }
             <div>
               <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase italic">Available Colors</h3>
               <div className="flex flex-wrap gap-3">
+                {/* Active Product Thumbnail */}
                 <div className="w-16 h-16 rounded-xl border-2 border-[#d4af37] overflow-hidden p-0.5">
                   <img src={product.images?.[0]?.url} className="w-full h-full object-cover rounded-lg opacity-40" />
                 </div>
+                
+                {/* Other Related Colors */}
                 {relatedColors.map((color) => (
                   <Link key={color._id} href={`/products/${color.slug}`} className="block">
                     <div className="w-16 h-16 rounded-xl border border-gray-700 hover:border-[#d4af37] transition-all overflow-hidden cursor-pointer">
@@ -94,6 +97,17 @@ export default function ProductDetailsClient({ product, relatedColors, content }
                     </div>
                   </Link>
                 ))}
+
+                {/* New: View More Box */}
+                {product.subCategory && (
+                  <Link href={`/category/bedsheet/${product.subCategory}`} className="block">
+                    <div className="w-16 h-16 rounded-xl border border-dashed border-gray-600 hover:border-[#d4af37] bg-white/5 flex flex-col items-center justify-center transition-all cursor-pointer group">
+                      <span className="text-[10px] font-bold text-gray-400 group-hover:text-[#d4af37] uppercase text-center leading-tight">
+                        View<br/>More
+                      </span>
+                    </div>
+                  </Link>
+                )}
               </div>
             </div>
           )}

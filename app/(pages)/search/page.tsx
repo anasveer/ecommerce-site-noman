@@ -21,7 +21,7 @@ function SearchContent() {
   }, [query]);
 
   return (
-    <section className="min-h-screen py-20 bg-[#0a0f1d] text-white">
+    <section className="min-h-screen py-20 bg-[#0a0f1d] text-white mt-5">
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="text-3xl font-bold mb-8">
           Search Results for: <span className="text-[#d4af37]">"{query}"</span>
@@ -29,7 +29,7 @@ function SearchContent() {
         {loading ? (
           <p>Loading products...</p>
         ) : products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {products.map((p: any) => <ProductCard key={p._id} product={p} />)}
           </div>
         ) : (

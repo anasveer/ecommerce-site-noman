@@ -7,19 +7,19 @@ const CONTENT_MAP: any = {
   "single-pair-bedsheet": {
     fabric: "Crystal cotton 💯",
     note: "Colour and Fabric Life Time Guaranteed 😇",
-    details: ["2 Bedsheet Size 150/240cm", "2 Pillows Cover 45/70cm"],
+    details: ["2 Bedsheet Size 150/240cm", "2 Pillows Cover 45/70cm", "With picture & bag packing "],
     footer: "Wholesale Rate For Resellers"
   },
   "3pcs-bedsheet": {
     fabric: "Crystal cotton 💯",
     note: "Colour and Stuff LifeTime Guaranteed 😇",
-    details: ["1 Bedsheet Size 89/92", "2 Pipping Pillows Cover 19/29"],
+    details: ["1 Bedsheet Size 89/92", "2 Pipping Pillows Cover 19/29", "With picture & bag packing"],
     footer: "Wholesale Rate *1399"
   },
   "comforter-set": {
     fabric: "Cotton Mix 100% Fine Stuff",
     note: "7Pc Printed Comforter Set",
-    details: ["1 King Comforter", "1 King Bedsheet", "4 Pillows", "1 Cushion"],
+    details: ["1 King Size Filled Comforter", "1 King Size Bedsheet", "2 Quilted Pillow Cover", "2 Simple Pillow Cover", "1 Quilted Cushion Cover"],
     footer: "Premium Quality"
   }
 };
@@ -42,11 +42,12 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
   const safeProduct = {
     ...product,
     _id: String(product._id),
+    subCategory: product.subCategory, // Ensuring subCategory is passed
     createdAt: product.createdAt ? new Date(product.createdAt).toISOString() : null,
     updatedAt: product.updatedAt ? new Date(product.updatedAt).toISOString() : null,
   };
 
-  const safeRelatedColors = relatedColors.map((color) => ({
+  const safeRelatedColors = relatedColors.map((color: any) => ({
     ...color,
     _id: String(color._id),
   }));
