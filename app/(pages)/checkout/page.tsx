@@ -12,7 +12,6 @@ type CheckoutForm = {
   phone: string;
   city: string;
   address: string;
-  shipping: 'standard' | 'express';
   payment: 'cod' | 'advance';
 };
 
@@ -22,7 +21,6 @@ const defaultForm: CheckoutForm = {
   phone: '',
   city: '',
   address: '',
-  shipping: 'standard',
   payment: 'cod',
 };
 
@@ -31,13 +29,46 @@ export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
   const [form, setForm] = useState<CheckoutForm>(defaultForm);
   const [error, setError] = useState('');
+  const [screenshotError, setScreenshotError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [screenshotFile, setScreenshotFile] = useState<File | null>(null);
   const [screenshotPreview, setScreenshotPreview] = useState<string | null>(null);
 
-  const totalWithShipping = useMemo(() => {
-    const shippingRate = form.shipping === 'standard' ? 150 : 350;
-    return totalPrice + shippingRate;
-  }, [totalPrice, form.shipping]);
+  useEffect(() => {
+    console.log('📋 Checkout page loaded with items:', items.map(i => ({ title: i.title, kg: i.kg, qty: i.quantity })));
+  }, [items]);
+
+  const getShippingRate = (kg: number) => {
+    const kgValue = Math.round(Number(kg) || 1);
+    const rates: Record<number, number> = {
+      1: 250,
+      2: 340,
+      3: 430,
+      4: 470,
+      5: 500,
+      6: 650,
+      7: 750,
+      8: 950,
+      9: 1200,
+      10: 1500,
+    };
+    const rate = rates[kgValue] || 250;
+    console.log(`⚙️ getShippingRate input: ${kg} → parsed: ${kgValue} → rate: Rs. ${rate}`);
+    return rate;
+  };
+
+  const shippingCost = useMemo(() => {
+    const calculated = items.reduce((sum, item) => {
+      const itemWeight = item.kg ?? 1;
+      const rate = getShippingRate(itemWeight);
+      console.log(`📦 Item "${item.title}": kg=${itemWeight}, rate=${rate}, qty=${item.quantity}, subtotal=${rate * item.quantity}`);
+      return sum + rate * item.quantity;
+    }, 0);
+    console.log(`🚚 Total shipping cost: Rs. ${calculated}`);
+    return calculated;
+  }, [items]);
+
+  const totalWithShipping = useMemo(() => totalPrice + shippingCost, [totalPrice, shippingCost]);
 
   useEffect(() => {
     if (items.length === 0) {
@@ -75,13 +106,17 @@ export default function CheckoutPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!form.fullName || !form.email || !form.phone || !form.city || !form.address) {
+    if (!form.fullName || !form.phone || !form.city || !form.address) {
       setError('Please fill all required fields.');
       return;
     }
 
+    // Clear screenshot error when starting validation
+    setScreenshotError('');
+
+    // Validate screenshot only if advance payment is selected
     if (form.payment === 'advance' && !screenshotFile) {
-      setError('Advance payment requires screenshot proof.');
+      setScreenshotError('Payment screenshot is required for advance payment (Proof).');
       return;
     }
 
@@ -112,9 +147,10 @@ export default function CheckoutPage() {
         ...item,
         mainCategory: item.mainCategory || 'unknown',
         subCategory: item.subCategory || 'unknown',
+        kg: item.kg ?? 1,
       })),
       total: totalPrice,
-      shippingCost: form.shipping === 'standard' ? 150 : 350,
+      shippingCost,
       amountPayable: totalWithShipping,
       paymentMode: form.payment === 'cod' ? 'Cash on Delivery' : 'Advance (Bank Transfer)',
       paymentInfo: form.payment === 'advance' ? 'Bank: Hania Bank | IBAN: PK00HANIA1234567890' : 'Pay on delivery',
@@ -126,13 +162,27 @@ export default function CheckoutPage() {
     const success = await saveOrder(order);
     if (success) {
       clearCart();
-      alert(`Order placed successfully! Your Order ID is ${order.id}`);
-      router.push('/my-orders');
+      setSuccessMessage(`Order placed successfully! Your Order ID is ${order.id}`);
+      
+      // Hide notification after 3 seconds and redirect
+      setTimeout(() => {
+        setSuccessMessage('');
+        router.push('/my-orders');
+      }, 3000);
     }
   };
 
   return (
     <div className="min-h-screen bg-[#f8fafc] py-12 px-4 sm:px-6 lg:px-8 text-slate-900">
+      {/* Success Notification */}
+      {successMessage && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          </svg>
+          <span>{successMessage}</span>
+        </div>
+      )}
       <div className="mx-auto max-w-6xl">
         <h1 className="text-3xl font-bold mb-6">Checkout</h1>
         <div className="grid lg:grid-cols-2 gap-6">
@@ -142,18 +192,10 @@ export default function CheckoutPage() {
 
             <div className="space-y-3">
               <input value={form.fullName} onChange={e => setForm({...form, fullName: e.target.value})} type="text" placeholder="Full Name" className="w-full border border-slate-300 rounded-lg px-3 py-2" required />
-              <input value={form.email} onChange={e => setForm({...form, email: e.target.value})} type="email" placeholder="Email" className="w-full border border-slate-300 rounded-lg px-3 py-2" required />
+              <input value={form.email} onChange={e => setForm({...form, email: e.target.value})} type="email" placeholder="Option (Email)" className="w-full border border-slate-300 rounded-lg px-3 py-2" />
               <input value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} type="tel" placeholder="Phone" className="w-full border border-slate-300 rounded-lg px-3 py-2" required />
               <input value={form.city} onChange={e => setForm({...form, city: e.target.value})} type="text" placeholder="City" className="w-full border border-slate-300 rounded-lg px-3 py-2" required />
               <textarea value={form.address} onChange={e => setForm({...form, address: e.target.value})} placeholder="Full address" rows={3} className="w-full border border-slate-300 rounded-lg px-3 py-2" required />
-            </div>
-
-            <div className="mt-5">
-              <p className="font-medium">Shipping method</p>
-              <select value={form.shipping} onChange={e => setForm({...form, shipping: e.target.value as CheckoutForm['shipping']})} className="w-full mt-2 border border-slate-300 rounded-lg px-3 py-2">
-                <option value="standard">Standard Shipping (Rs. 150)</option>
-                <option value="express">Express Shipping (Rs. 350)</option>
-              </select>
             </div>
 
             <div className="mt-5">
@@ -189,6 +231,7 @@ export default function CheckoutPage() {
                     }}
                     className="w-full rounded-lg border border-slate-300 p-2"
                   />
+                  {screenshotError && <p className="text-red-500 text-sm mt-2">{screenshotError}</p>}
                   {screenshotPreview && (
                     <img src={screenshotPreview} alt="Proof preview" className="mt-2 max-h-32 rounded-lg border border-slate-300" />
                   )}
@@ -217,7 +260,7 @@ export default function CheckoutPage() {
 
             <div className="mt-5 border-t border-slate-200 pt-4 space-y-2 text-sm">
               <div className="flex justify-between"><span>Sub total</span><span>Rs. {totalPrice}</span></div>
-              <div className="flex justify-between"><span>Shipping</span><span>Rs. {form.shipping === 'standard' ? 150 : 350}</span></div>
+              <div className="flex justify-between"><span>Shipping</span><span>Rs. {shippingCost}</span></div>
               <div className="flex justify-between font-bold"><span>Total</span><span>Rs. {totalWithShipping}</span></div>
             </div>
 

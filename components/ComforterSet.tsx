@@ -12,6 +12,7 @@ type Product = {
   price: number;
   mainCategory: string;
   subCategory?: string;
+  kg?: number;
   images: ProductImage[];
 };
 

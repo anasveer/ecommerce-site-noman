@@ -13,11 +13,14 @@ const ProductSchema = new Schema({
   barcode: { type: String, required: true, index: true }, // Search optimized
   mainCategory: { type: String, required: true, enum: ["fabric", "bedsheet"] },
   subCategory: { type: String, enum: ["comforter-set", "3pcs-bedsheet", "single-pair-bedsheet", ""], default: "" },
+  fabric: { type: String, default: "" }, // Fabric type for bedsheets
+  kg: { type: Number, required: true, min: 1, max: 10, default: 1 },
   images: { type: [ProductImageSchema], default: [] },
 }, { timestamps: true });
 
 ProductSchema.index({ slug: 1 });
 ProductSchema.index({ barcode: 1 });
+ProductSchema.index({ fabric: 1 });
 ProductSchema.index({ title: "text" }); // Text search enabled
 
 export const ProductModel = models.Product || model("Product", ProductSchema);

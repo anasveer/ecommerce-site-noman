@@ -3,7 +3,7 @@
 import Link from "next/link";
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
-import { FABRICS_SINGLE_PAIR } from "@/lib/constants";
+import { FABRICS_3PCS } from "@/lib/constants";
 
 type ProductImage = {
   url: string;
@@ -21,17 +21,17 @@ type Product = {
   images: ProductImage[];
 };
 
-export default function ProductSectionSinglePair() {
+export default function ThreePcsBedsheet() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [displayProducts, setDisplayProducts] = useState<Product[]>([]);
   const [selectedFabric, setSelectedFabric] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch all single pair products
+  // Fetch all 3pcs products
   useEffect(() => {
     const fetchProducts = async () => {
       const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-      const url = `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=single-pair-bedsheet`;
+      const url = `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=3pcs-bedsheet`;
       
       try {
         console.log("🔍 Fetching from URL:", url);
@@ -108,21 +108,21 @@ export default function ProductSectionSinglePair() {
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e8b2] to-[#b08c2e] mb-2">
-              Single Pair Bedsheet <span className="text-[#d4af37]">Edition</span>
+            <h2 className="text-3xl font-bold text-white mb-2">
+              3pcs Bedsheet <span className="text-[#d4af37]">Collections</span>
             </h2>
-            <p className="text-gray-300 max-w-xl">
-              Experience premium collection for extraordinary softness.
+            <p className="text-gray-400">
+              Explore our 3-piece bedsheet collection
             </p>
           </div>
 
-          {/* Laptop View Button */}
+          {/* Desktop View Button */}
           <div className="hidden lg:block">
             <Link
-              href="/category/bedsheet/single-pair-bedsheet"
+              href="/category/bedsheet/3pcs-bedsheet"
               className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
             >
-              View Single Pair Bedsheet <span className="inline-block ml-2 arrow-shift">→</span>
+              View 3pcs Collection <span className="inline-block ml-2 arrow-shift">→</span>
             </Link>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function ProductSectionSinglePair() {
             >
               All Fabrics
             </button>
-            {FABRICS_SINGLE_PAIR.map((fabric) => (
+            {FABRICS_3PCS.map((fabric) => (
               <button
                 key={fabric.value}
                 onClick={() => handleFabricClick(fabric.value)}
@@ -156,8 +156,8 @@ export default function ProductSectionSinglePair() {
           </div>
         </div>
 
-        {/* Products Grid - 3 cards for single pair */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Products Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {displayProducts.slice(0, 8).map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
@@ -172,10 +172,10 @@ export default function ProductSectionSinglePair() {
         {/* Mobile View Button */}
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
-            href="/category/bedsheet/single-pair-bedsheet"
+            href="/category/bedsheet/3pcs-bedsheet"
             className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
           >
-            View Single Pair Bedsheet <span className="inline-block ml-2">→</span>
+            View 3pcs Collection <span className="inline-block ml-2">→</span>
           </Link>
         </div>
       </div>

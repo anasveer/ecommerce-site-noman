@@ -11,6 +11,7 @@ const OrderItemSchema = new Schema(
     barcode: { type: String, required: false },
     mainCategory: { type: String, required: false },
     subCategory: { type: String, required: false },
+    kg: { type: Number, required: false, min: 1, max: 10 },
   },
   { _id: false }
 );

@@ -3,9 +3,15 @@
 import { useCart } from '@/context/CartContext';
 import Link from 'next/link';
 import { Plus, Minus, Trash2 } from 'lucide-react';
+import { useEffect } from 'react';
 
 const CartPage = () => {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCart();
+
+  // Debug: Log cart items with kg
+  useEffect(() => {
+    console.log('🛒 Cart Page - Current items:', items.map(i => ({ title: i.title, kg: i.kg, qty: i.quantity })));
+  }, [items]);
 
   if (items.length === 0) {
     return (
@@ -35,6 +41,7 @@ const CartPage = () => {
               <div className="col-span-5">
                 <h2 className="text-lg font-semibold">{item.title}</h2>
                 <p className="text-gray-400 text-sm">Code: {item.barcode}</p>
+                {/* <p className="text-sm text-gray-500 mt-1">Weight: <span className="text-[#d4af37] font-semibold">{item.kg || 1} kg</span></p> */}
                 <p className="text-[#d4af37] font-bold text-lg mt-1">Rs. {item.price}</p>
               </div>
 

@@ -42,26 +42,26 @@ function badgeClass(status: OrderStatus) {
 }
 
 export default function MyOrdersPage() {
-  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // Image Preview State
 
   useEffect(() => {
-    const savedEmail = localStorage.getItem('user-email');
-    if (savedEmail) {
-      setEmail(savedEmail);
-      fetchOrders(savedEmail);
+    const savedPhone = localStorage.getItem('user-phone');
+    if (savedPhone) {
+      setPhone(savedPhone);
+      fetchOrders(savedPhone);
     }
   }, []);
 
-  const fetchOrders = async (userEmail?: string) => {
-    const targetEmail = userEmail || email;
-    if (!targetEmail.trim()) return;
+  const fetchOrders = async (userPhone?: string) => {
+    const targetPhone = userPhone || phone;
+    if (!targetPhone.trim()) return;
     setLoading(true);
-    localStorage.setItem('user-email', targetEmail);
+    localStorage.setItem('user-phone', targetPhone);
     try {
-      const res = await fetch(`/api/orders?email=${encodeURIComponent(targetEmail)}`);
+      const res = await fetch(`/api/orders?phone=${encodeURIComponent(targetPhone)}`);
       if (res.ok) {
         const data = await res.json();
         setOrders(data);
@@ -81,10 +81,10 @@ export default function MyOrdersPage() {
 
         <div className="mb-8 flex gap-4">
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email to track orders"
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Enter your mobile number to track orders"
             className="flex-1 h-12 rounded-2xl border border-slate-300 px-4 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
@@ -96,9 +96,9 @@ export default function MyOrdersPage() {
           </button>
         </div>
 
-        {orders.length === 0 && !loading && email && (
+        {orders.length === 0 && !loading && phone && (
           <div className="text-center py-10 bg-white rounded-2xl border border-dashed border-slate-300">
-            <p className="text-slate-500">No placed orders found for this email.</p>
+            <p className="text-slate-500">No placed orders found for this mobile number.</p>
           </div>
         )}
 

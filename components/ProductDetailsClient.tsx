@@ -12,6 +12,7 @@ interface ProductDetailsClientProps {
     title: string;
     price: number;
     barcode: string;
+    kg?: number;
     images: { url: string }[];
     mainCategory?: string;
     subCategory?: string;
@@ -30,7 +31,7 @@ export default function ProductDetailsClient({ product, relatedColors, content }
   const { addToCart, items } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({
+    const cartItem = {
       id: product._id,
       slug: product.slug,
       title: product.title,
@@ -40,7 +41,12 @@ export default function ProductDetailsClient({ product, relatedColors, content }
       barcode: product.barcode,
       mainCategory: product.mainCategory || undefined,
       subCategory: product.subCategory || undefined,
-    });
+      kg: product.kg ?? 1,
+    };
+    
+    console.log('🛒 Adding to cart:', { title: product.title, productKg: product.kg, cartItemKg: cartItem.kg });
+    
+    addToCart(cartItem);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   };

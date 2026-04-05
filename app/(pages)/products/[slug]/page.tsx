@@ -42,10 +42,13 @@ export default async function ProductDetailsPage({ params }: { params: Promise<{
   const safeProduct = {
     ...product,
     _id: String(product._id),
-    subCategory: product.subCategory, // Ensuring subCategory is passed
+    kg: Number(product.kg || 1),
+    subCategory: product.subCategory,
     createdAt: product.createdAt ? new Date(product.createdAt).toISOString() : null,
     updatedAt: product.updatedAt ? new Date(product.updatedAt).toISOString() : null,
   };
+
+  console.log('🔍 Product fetched from DB:', { slug, kg: product.kg, title: product.title });
 
   const safeRelatedColors = relatedColors.map((color: any) => ({
     ...color,

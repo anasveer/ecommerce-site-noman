@@ -1,87 +1,87 @@
-import Link from "next/link";
-import ProductCard from "./ProductCard";
+// import Link from "next/link";
+// import ProductCard from "./ProductCard";
 
-type ProductImage = {
-  url: string;
-};
+// type ProductImage = {
+//   url: string;
+// };
 
-type Product = {
-  _id: string;
-  slug: string;
-  title: string;
-  price: number;
-  mainCategory: string;
-  subCategory?: string;
-  images: ProductImage[];
-};
+// type Product = {
+//   _id: string;
+//   slug: string;
+//   title: string;
+//   price: number;
+//   mainCategory: string;
+//   subCategory?: string;
+//   images: ProductImage[];
+// };
 
-async function getProducts() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+// async function getProducts() {
+//   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
-  const res = await fetch(
-    `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=3pcs-bedsheet&limit=8`,
-    { cache: "no-store" }
-  );
+//   const res = await fetch(
+//     `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=3pcs-bedsheet&limit=8`,
+//     { cache: "no-store" }
+//   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
+//   if (!res.ok) {
+//     throw new Error("Failed to fetch products");
+//   }
 
-  return res.json();
-}
+//   return res.json();
+// }
 
-export default async function ProductSection() {
-  const products: Product[] = await getProducts();
+// export default async function ProductSection() {
+//   const products: Product[] = await getProducts();
 
-  return (
-    <section className="py-24 bg-[#0a0f1d]">
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Main Flex Container */}
-        <div className="flex flex-col gap-12">
+//   return (
+//     <section className="py-24 bg-[#0a0f1d]">
+//       <div className="max-w-7xl mx-auto px-4">
+//         {/* Main Flex Container */}
+//         <div className="flex flex-col gap-12">
           
-          {/* Header Section */}
-          <div className="flex justify-between items-end gap-4 flex-wrap">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-2">
-                3pcs Bedsheet <span className="text-[#d4af37]">Now</span>
-              </h2>
-              <p className="text-gray-400">
-                Explore our latest 3pcs bedsheet collection
-              </p>
-            </div>
+//           {/* Header Section */}
+//           <div className="flex justify-between items-end gap-4 flex-wrap">
+//             <div>
+//               <h2 className="text-3xl font-bold text-white mb-2">
+//                 3pcs Bedsheet <span className="text-[#d4af37]">Now</span>
+//               </h2>
+//               <p className="text-gray-400">
+//                 Explore our latest 3pcs bedsheet collection
+//               </p>
+//             </div>
 
-            {/* Laptop View Button (Hidden on Mobile) */}
-            <div className="hidden lg:flex gap-4">
-              <Link
-                href="/category/bedsheet/3pcs-bedsheet"
-                className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
-              >
-                View 3pcs Bedsheet
-                <span className="inline-block ml-2 arrow-shift">→</span>
-              </Link>
-            </div>
-          </div>
+//             {/* Laptop View Button (Hidden on Mobile) */}
+//             <div className="hidden lg:flex gap-4">
+//               <Link
+//                 href="/category/bedsheet/3pcs-bedsheet"
+//                 className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+//               >
+//                 View 3pcs Bedsheet
+//                 <span className="inline-block ml-2 arrow-shift">→</span>
+//               </Link>
+//             </div>
+//           </div>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {products.map((product: Product) => (
-              <ProductCard key={product._id} product={product} />
-            ))}
-          </div>
+//           {/* Products Grid */}
+//           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+//             {products.map((product: Product) => (
+//               <ProductCard key={product._id} product={product} />
+//             ))}
+//           </div>
 
-          {/* Mobile View Button (Only Visible on Mobile at the Bottom) */}
-          <div className="flex justify-center lg:hidden">
-            <Link
-              href="/category/bedsheet/3pcs-bedsheet"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
-            >
-              View 3pcs Bedsheet
-              <span className="inline-block ml-2">→</span>
-            </Link>
-          </div>
+//           {/* Mobile View Button (Only Visible on Mobile at the Bottom) */}
+//           <div className="flex justify-center lg:hidden">
+//             <Link
+//               href="/category/bedsheet/3pcs-bedsheet"
+//               className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+//             >
+//               View 3pcs Bedsheet
+//               <span className="inline-block ml-2">→</span>
+//             </Link>
+//           </div>
 
-        </div>
-      </div>
-    </section>
-  );
-}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }

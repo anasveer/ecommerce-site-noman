@@ -30,6 +30,7 @@ export async function POST(req: NextRequest) {
         barcode: item.barcode || "",
         mainCategory: item.mainCategory || "",
         subCategory: item.subCategory || "",
+        kg: Number(item.kg || 1),
       })),
       total: Number(payload.total || 0),
       shippingCost: Number(payload.shippingCost || 0),
@@ -58,12 +59,15 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
-    const email = searchParams.get("email");
+    const phone = searchParams.get("phone");
+
+    if (!phone || !phone.trim()) {
+      return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
+    }
 
     await dbConnect();
 
-    const query = email ? { "user.email": email } : {};
-    const orders = await OrderModel.find(query).sort({ createdAt: -1 }).lean();
+    const orders = await OrderModel.find({ "user.phone": phone }).sort({ createdAt: -1 }).lean();
 
     return NextResponse.json(orders);
   } catch (error) {

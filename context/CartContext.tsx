@@ -11,6 +11,7 @@ export interface CartItem {
   barcode: string;
   mainCategory?: string;
   subCategory?: string;
+  kg?: number;
 }
 
 interface CartContextType {
@@ -35,7 +36,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(cartKey);
-      if (saved) setItems(JSON.parse(saved));
+      if (saved) {
+        const parsed = JSON.parse(saved) as Array<CartItem>;
+        setItems(parsed.map(item => ({ ...item, kg: item.kg ?? 1 })));
+      }
     } catch {}
   }, [cartKey]);
 
@@ -45,13 +49,17 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   }, [items, cartKey]);
 
   const addToCart = (item: CartItem) => {
+    console.log('🛒 CartContext.addToCart called with:', { title: item.title, kg: item.kg, quantity: item.quantity });
     setItems(prev => {
       const existing = prev.find(i => i.id === item.id);
       if (existing) {
+        const updated = { ...existing, ...item, quantity: existing.quantity + item.quantity };
+        console.log('🛒 Item already exists, merging:', { existingKg: existing.kg, newKg: item.kg, finalKg: updated.kg });
         return prev.map(i =>
-          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+          i.id === item.id ? updated : i
         );
       }
+      console.log('🛒 New item added to cart with kg:', item.kg);
       return [...prev, item];
     });
   };

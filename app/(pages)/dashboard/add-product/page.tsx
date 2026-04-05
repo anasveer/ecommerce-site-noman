@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { BEDSHEET_SUBCATEGORIES } from "@/lib/constants";
+import { BEDSHEET_SUBCATEGORIES, FABRICS_3PCS, FABRICS_SINGLE_PAIR } from "@/lib/constants";
 import { Upload, ImagePlus } from "lucide-react";
 
 type UploadedImage = {
@@ -14,15 +14,28 @@ export default function AddProductPage() {
   const [price, setPrice] = useState("");
   const [mainCategory, setMainCategory] = useState<"fabric" | "bedsheet">("fabric");
   const [subCategory, setSubCategory] = useState("");
+  const [fabric, setFabric] = useState("");
+  const [kg, setKg] = useState("1");
   const [images, setImages] = useState<UploadedImage[]>([]);
   const [loading, setLoading] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [barcode, setBarcode] = useState(""); // State exist karti hai
+  const [barcode, setBarcode] = useState("");
 
   const showBedsheetSubcategories = useMemo(
     () => mainCategory === "bedsheet",
     [mainCategory]
   );
+
+  const showFabricDropdown = useMemo(
+    () => subCategory === "3pcs-bedsheet" || subCategory === "single-pair-bedsheet",
+    [subCategory]
+  );
+
+  const fabricOptions = useMemo(() => {
+    if (subCategory === "3pcs-bedsheet") return FABRICS_3PCS;
+    if (subCategory === "single-pair-bedsheet") return FABRICS_SINGLE_PAIR;
+    return [];
+  }, [subCategory]);
 
   async function handleImageUpload(files: FileList | null) {
     if (!files?.length) return;
@@ -52,32 +65,61 @@ export default function AddProductPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+
+    console.log("Form Submission Debug:");
+    console.log("  mainCategory:", mainCategory);
+    console.log("  subCategory:", subCategory);
+    console.log("  showFabricDropdown:", showFabricDropdown);
+    console.log("  fabric state:", fabric);
+    console.log("  kg state:", kg);
+    console.log("  fabricOptions.length:", fabricOptions.length);
+
+    if (showFabricDropdown && !fabric) {
+      alert("Please select a fabric for this bedsheet product.");
+      return;
+    }
+
+    const selectedKg = Number(kg);
+    if (Number.isNaN(selectedKg) || selectedKg < 1 || selectedKg > 10) {
+      alert("Please select a valid weight between 1 and 10 kg.");
+      return;
+    }
+
+    const body = {
+      title,
+      price: Number(price),
+      barcode: barcode.trim(),
+      mainCategory,
+      subCategory: mainCategory === "bedsheet" ? subCategory : "",
+      fabric: showFabricDropdown ? fabric : "",
+      kg: selectedKg,
+      images,
+    };
+
+    console.log("Submitting product with kg:", selectedKg);
+
     setLoading(true);
 
-    // FIX: Barcode ko body mein add kiya gaya hai
     const res = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title,
-        price: Number(price), // Price ko number mein convert karein
-        barcode: barcode.trim(), // Barcode ab include ho raha hai
-        mainCategory,
-        subCategory: mainCategory === "bedsheet" ? subCategory : "",
-        images,
-      }),
+      body: JSON.stringify(body),
     });
 
     if (res.ok) {
+      const product = await res.json();
+      console.log("Product saved with kg:", product.kg);
       setTitle("");
       setPrice("");
-      setBarcode(""); // Form reset
+      setBarcode("");
+      setKg("1");
       setMainCategory("fabric");
       setSubCategory("");
+      setFabric("");
       setImages([]);
-      alert("Product added successfully");
+      alert(`Product added successfully. Weight: ${product.kg}kg`);
     } else {
       const errorData = await res.json();
       alert("Failed to add product: " + (errorData.error || "Unknown error"));
@@ -125,6 +167,26 @@ export default function AddProductPage() {
             />
           </div>
 
+          <div>
+            <label className="mb-2 block text-sm font-semibold text-slate-700">
+              Product Weight (kg)
+            </label>
+            <select
+              value={kg}
+              onChange={(e) => setKg(e.target.value)}
+              className="h-12 w-full rounded-2xl border border-slate-300 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-gray-600"
+              required
+            >
+              <option value="">Select weight</option>
+              {[1,2,3,4,5,6,7,8,9,10].map((value) => (
+                <option key={value} value={value}>
+                  {value} kg
+                </option>
+              ))}
+            </select>
+            <p className="mt-2 text-xs text-slate-500">Shipping will be calculated automatically from this weight at checkout.</p>
+          </div>
+
           {/* Barcode Field - Design refined */}
           <div className="md:col-span-2">
             <label className="mb-2 block text-sm font-semibold text-slate-700 text-blue-600">
@@ -163,12 +225,39 @@ export default function AddProductPage() {
               </label>
               <select
                 value={subCategory}
-                onChange={(e) => setSubCategory(e.target.value)}
+                onChange={(e) => {
+                  setSubCategory(e.target.value);
+                  setFabric("");
+                }}
                 className="h-12 w-full rounded-2xl border border-slate-300 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-gray-600"
                 required
               >
                 <option value="">Select subcategory</option>
                 {BEDSHEET_SUBCATEGORIES.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {showFabricDropdown && (
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-slate-700">
+                Fabric Type
+              </label>
+              <select
+                value={fabric}
+                onChange={(e) => {
+                  console.log("Fabric selected:", e.target.value);
+                  setFabric(e.target.value);
+                }}
+                className="h-12 w-full rounded-2xl border border-slate-300 px-4 outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 text-gray-600"
+                required
+              >
+                <option value="">Select fabric</option>
+                {fabricOptions.map((item) => (
                   <option key={item.value} value={item.value}>
                     {item.label}
                   </option>
