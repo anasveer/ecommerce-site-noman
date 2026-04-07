@@ -1,8 +1,8 @@
 import React from 'react'
  import Hero from "../components/hero";
 import CategoryShowcase from "../components/CategoryShowcase";
-// import Showcase3 from "../components/showcase3";
-// import S1 from "../components/showcase1";
+ import Showcase3 from "../components/showcase3";
+ import S1 from "../components/showcase1";
 // import Fabric from "../components/ComforterSet";
 // import Showcase2 from "../components/showcase2";
 // import Singal from "../components/SinglePair";
@@ -24,16 +24,16 @@ const page = () => {
       <CategoryShowcase />
       {/* <ThreePcsBedsheet />
       {/* <ProductSection/> */}
-      {/* <Showcase3 />
+      <Showcase3 />
       <S1 />
-      <Fabric />
+      {/* <Fabric />
       <Showcase2 />
       <Singal />
       <DigitalArtistryShowcase />
       <Room />
       <Look />
       <Testimonials />
-      <Quality /> */} 
+      <Quality /> */}  
        
   
     </div>
