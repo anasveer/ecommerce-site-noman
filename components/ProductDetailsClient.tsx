@@ -54,9 +54,20 @@ export default function ProductDetailsClient({ product, relatedColors, content }
   return (
     <section className="min-h-screen py-16 bg-[#0a0f1d] text-white mt-20">
       <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10">
-        <div className="rounded-3xl border border-gray-800 overflow-hidden bg-[#0f172a]">
-          <img src={product.images?.[0]?.url} alt={product.title} className="w-full h-[500px] object-cover" />
-        </div>
+       <div className="relative h-[250px] sm:h-[350px] md:h-[400px] rounded-2xl overflow-hidden">
+  {/* blurred background */}
+  <img
+    src={product.images?.[0]?.url}
+    className="absolute inset-0 w-full h-full object-cover blur-xl scale-110"
+  />
+
+  {/* main image */}
+  <img
+    src={product.images?.[0]?.url}
+    alt={product.title}
+    className="relative w-full h-full object-contain"
+  />
+</div>
 
         <div className="space-y-5">
           <span className="text-[#d4af37] text-xs font-bold tracking-widest uppercase bg-[#d4af37]/10 px-3 py-1 rounded-full">

@@ -32,7 +32,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <section className="relative h-[45vh] md:h-[90vh] w-full overflow-hidden bg-[#0a0f1d] ">
+    <section className="relative h-[65vh] md:h-[90vh] w-full overflow-hidden bg-[#0a0f1d] ">
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
           <img

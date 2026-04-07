@@ -49,7 +49,7 @@ const SanctuaryLookbook = () => {
           </div>
 
           {/* Floating Shop Card - Overlap Effect for Mobile */}
-<div className="absolute bottom-[-50] right-4 translate-y-1/2 sm:translate-y-0 sm:bottom-12 sm:right-12 z-30 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 w-[calc(100%-2rem)] sm:w-[380px]">
+<div className="absolute bottom-[-50] right-4 translate-y-1/2 sm:translate-y-0 sm:bottom-12 sm:right-12 z-30 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 w-[calc(100%-2rem)] sm:w-[380px] hidden sm:block">
   <div className="bg-[#0f172a]/90 backdrop-blur-3xl border border-white/10 p-6 sm:p-10 rounded-[30px] sm:rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group/card hover:bg-[#0f172a] transition-all duration-500">
     <h3 className="text-xl sm:text-3xl font-black text-white mb-2 sm:mb-4 tracking-tight leading-tight">Shop The Scene</h3>
     <p className="text-gray-300 leading-relaxed text-xs sm:text-sm mb-6 sm:mb-10 font-medium opacity-90">

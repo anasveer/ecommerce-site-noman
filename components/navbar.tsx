@@ -46,7 +46,7 @@ const Navbar = () => {
                 <img src="/logo.png" alt="universal" className="w-full h-full object-cover rounded-full" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className=" text-xl sm:text-2xl font-bold">
+                <span className=" text-xl sm:text-2xl font-bold italic font-serif">
                   Universal <span className="text-[#d4af37] font-light">Bedding</span>
                 </span>
                 {/* <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
@@ -205,8 +205,8 @@ const Navbar = () => {
               )}
             </Link>
 
-            <a href="#" className="block px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all">About Us</a>
-            <a href="#" className="block px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all">Contact</a>
+             <a href="/my-orders" className="block px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all">My Order</a>
+
           </div>
 
           <div className="p-6 border-t border-gray-800">

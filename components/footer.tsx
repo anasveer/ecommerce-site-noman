@@ -15,7 +15,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-[#d4af37] rounded-lg flex items-center justify-center overflow-hidden">
                 <img src="/logo.png" alt="Universal Logo" className="w-full h-full object-cover rounded-lg" />
               </div>
-              <span className="font-bold text-xl text-white tracking-tight uppercase">
+              <span className="font-bold italic font-serif text-xl text-white tracking-tight uppercase">
                 Universal <span className="text-[#d4af37]">Bedding</span>
               </span>
             </div>

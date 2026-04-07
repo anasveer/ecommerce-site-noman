@@ -28,15 +28,19 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0f1d] text-white py-16 px-4 mt-20">
+    <div className="min-h-screen bg-[#0a0f1d] text-white py-16 px-2 mt-20">
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-8">Cart</h1>
 
         <div className="space-y-4">
           {items.map((item) => (
-            <div key={item.id} className="bg-[#0f172a] border border-gray-800 rounded-2xl p-5 grid grid-cols-12 gap-4 items-center">
+            <div key={item.id} className="bg-[#0f172a] border border-gray-800 rounded-2xl p-2 grid grid-cols-12 gap-4 items-center">
               <div className="col-span-2">
-                <img src={item.image} alt={item.title} className="w-full h-24 object-cover rounded-xl" />
+                <img
+  src={item.image}
+  alt={item.title}
+  className="w-full h-16 sm:h-24 object-cover rounded-xl"
+/>
               </div>
               <div className="col-span-5">
                 <h2 className="text-lg font-semibold">{item.title}</h2>
