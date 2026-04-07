@@ -17,18 +17,23 @@ type Product = {
 };
 
 async function getProducts() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL!;
+    const res = await fetch(
+      `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=comforter-set&limit=6`,
+      { cache: "no-store" }
+    );
 
-  const res = await fetch(
-    `${baseUrl}/api/products?mainCategory=bedsheet&subCategory=comforter-set&limit=6`,
-    { cache: "no-store" }
-  );
+    if (!res.ok) {
+      console.warn("Failed to fetch comforter set products", res.status);
+      return [];
+    }
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch comforter set products");
+    return res.json();
+  } catch (err) {
+    console.error("Error fetching comforter set products:", err);
+    return [];
   }
-
-  return res.json();
 }
 
 export default async function ProductSectionComforterSet() {

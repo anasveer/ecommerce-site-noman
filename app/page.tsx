@@ -3,7 +3,7 @@ import React from 'react'
 import CategoryShowcase from "../components/CategoryShowcase";
  import Showcase3 from "../components/showcase3";
  import S1 from "../components/showcase1";
-// import Fabric from "../components/ComforterSet";
+ import Fabric from "../components/ComforterSet";
 import Showcase2 from "../components/showcase2";
 import Singal from "../components/SinglePair";
 import ThreePcsBedsheet from "../components/ThreePcsBedsheet";
@@ -26,7 +26,7 @@ const page = () => {
     
       <Showcase3 />
       <S1 />
-       {/* <Fabric /> */}
+       <Fabric /> 
        <Showcase2 />
         <Singal />
       <DigitalArtistryShowcase />
