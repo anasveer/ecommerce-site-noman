@@ -5,13 +5,13 @@ import CategoryShowcase from "../components/CategoryShowcase";
  import S1 from "../components/showcase1";
 // import Fabric from "../components/ComforterSet";
 import Showcase2 from "../components/showcase2";
-// import Singal from "../components/SinglePair";
-// import ThreePcsBedsheet from "../components/ThreePcsBedsheet";
-// import DigitalArtistryShowcase from "../components/pixel";
-// import Room from "../components/room";
-// import Look from "../components/look";
-// import Quality from "../components/quality";
-// import Testimonials from "../components/Testimonials";
+import Singal from "../components/SinglePair";
+import ThreePcsBedsheet from "../components/ThreePcsBedsheet";
+import DigitalArtistryShowcase from "../components/pixel";
+import Room from "../components/room";
+import Look from "../components/look";
+import Quality from "../components/quality";
+import Testimonials from "../components/Testimonials";
 
  
 
@@ -22,19 +22,19 @@ const page = () => {
     <div>
        <Hero />
       <CategoryShowcase />
-      {/* <ThreePcsBedsheet />
-      {/* <ProductSection/> */}
+       <ThreePcsBedsheet />
+    
       <Showcase3 />
       <S1 />
        {/* <Fabric /> */}
        <Showcase2 />
-      {/* <Singal />
+        <Singal />
       <DigitalArtistryShowcase />
       <Room />
       <Look />
       <Testimonials />
-      <Quality /> */}  
-       
+      <Quality />  
+        
   
     </div>
   );
