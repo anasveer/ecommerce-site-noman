@@ -7,7 +7,7 @@ import { createSessionToken } from "@/lib/auth";
 export async function POST(req: Request) {
   try {
     // ✅ DB connect
-    await dbConnect();
+    // await dbConnect();
 
     // ✅ Body parse
     const body = await req.json();
