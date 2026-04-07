@@ -1,21 +1,21 @@
 import React from 'react';
 
-const PixelToPetal = () => {
+const DigitalArtistryShowcase = () => {
   const steps = [
     {
       number: "01",
-      title: "Ultra-High Scan Resolution",
-      description: "We begin by digitally capturing hand-painted artworks at 2400 DPI, preserving every whisper of the artist's brush."
+      title: "Premium Fabric Selection",
+      description: "We carefully select the finest cotton and blends, ensuring softness, durability, and breathability for ultimate comfort and satisfaction."
     },
     {
       number: "02",
-      title: "Nano-Ink Infusion",
-      description: "Environmentally certified inks are microscopically infused into the cotton fibers, ensuring vibrant color that becomes part of the fabric itself."
+      title: "Precision Cutting & Sewing",
+      description: "Expert artisans use advanced machinery for perfect cuts and reinforced stitching, guaranteeing longevity and a flawless fit on your bed."
     },
     {
       number: "03",
-      title: "Therapeutic Finishing",
-      description: "Each piece is steam-cured and silk-softened to maintain Universal Bedding's signature tactile luxury."
+      title: "Quality Control & Finishing",
+      description: "Each bedsheet undergoes rigorous testing for colorfastness, shrinkage resistance, and comfort, ensuring you get premium quality that lasts."
     }
   ];
 
@@ -59,9 +59,9 @@ const PixelToPetal = () => {
 
           {/* Right: Text Content Section */}
           <div className="flex-1 space-y-12">
-            <h2 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e8b2] to-[#b08c2e] leading-tight">
-              From Pixel <br />
-              to <span className="text-gray-400">Petal</span>
+            <h2 className="text-3xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e8b2] to-[#b08c2e] leading-tight">
+              Crafting Excellence <br />
+              in Every <span className="text-gray-400">Bedsheet</span>
             </h2>
 
             <div className="space-y-10">
@@ -95,4 +95,4 @@ const PixelToPetal = () => {
   );
 };
 
-export default PixelToPetal;
+export default DigitalArtistryShowcase;

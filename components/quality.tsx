@@ -5,13 +5,13 @@ const Features = () => {
   const featureList = [
     {
       icon: <Truck className="w-10 h-10 text-[#d4af37]" />,
-      title: "Free Express Shipping",
-      description: "On all orders over $250 with guaranteed 3-day delivery."
+      title: "Express Shipping",
+      description: "Shipping charged per kg with fast and reliable delivery options."
     },
     {
       icon: <ShieldCheck className="w-10 h-10 text-[#d4af37]" />,
-      title: "Quality Guarantee",
-      description: "100% satisfaction guarantee with our 30-day premium return policy."
+      title: "Refund & Quality Guarantee",
+      description: "7-day refund and exchange policy with 2-month quality guarantee."
     },
     {
       icon: <Leaf className="w-10 h-10 text-[#d4af37]" />,
@@ -21,7 +21,7 @@ const Features = () => {
     {
       icon: <Headphones className="w-10 h-10 text-[#d4af37]" />,
       title: "24/7 Premium Support",
-      description: "Dedicated concierge service for all your textile inquiries."
+      description: "Dedicated concierge service for all your inquiries."
     }
   ];
 

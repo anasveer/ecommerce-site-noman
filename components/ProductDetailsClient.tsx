@@ -131,7 +131,7 @@ export default function ProductDetailsClient({ product, relatedColors, content }
             <button
               onClick={() => {
                 const message = `Hi, I want to order: ${product.title} - Image: ${product.images?.[0]?.url} - ${window.location.href}`;
-                window.open(`https://wa.me/923218719472?text=${encodeURIComponent(message)}`, '_blank');
+                window.open(`https://wa.me/923290135661?text=${encodeURIComponent(message)}`, '_blank');
               }}
               className="flex-1 border border-gray-700 h-14 rounded-2xl font-bold bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300"
             >

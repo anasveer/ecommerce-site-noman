@@ -147,7 +147,7 @@ export default function ProductSectionSinglePair() {
                 className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                   selectedFabric === fabric.value
                     ? "bg-[#d4af37] text-black"
-                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    : "bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 text-gray-300"
                 }`}
               >
                 {fabric.label}

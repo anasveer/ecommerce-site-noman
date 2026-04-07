@@ -42,16 +42,16 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d4af37] to-[#f1d592] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)]">
-                <span className="text-[#0a0f1d] font-bold text-xl sm:text-2xl">H</span>
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#d4af37] to-[#f1d592] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.3)] overflow-hidden">
+                <img src="/logo.png" alt="universal" className="w-full h-full object-cover rounded-full" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="font-extrabold text-xl sm:text-2xl tracking-tighter uppercase italic">
+                <span className=" text-xl sm:text-2xl font-bold">
                   Universal <span className="text-[#d4af37] font-light">Bedding</span>
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
+                {/* <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
                   Premium Collections
-                </span>
+                </span> */}
               </div>
             </div>
           </div>

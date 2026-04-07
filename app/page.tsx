@@ -12,6 +12,7 @@ import DigitalArtistryShowcase from "../components/pixel";
 import Room from "../components/room";
 import Look from "../components/look";
 import Quality from "../components/quality";
+import Testimonials from "../components/Testimonials";
 
 const page = () => {
   return (
@@ -28,6 +29,7 @@ const page = () => {
       <DigitalArtistryShowcase />
       <Room />
       <Look />
+      <Testimonials />
       <Quality />
     </div>
   );
