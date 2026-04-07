@@ -1,7 +1,16 @@
 import "server-only";
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI!;
+function getMongoURI() {
+  const uri = process.env.MONGODB_URI;
+
+  if (!uri) {
+    console.warn("⚠️ MONGODB_URI is not set");
+    return null;
+  }
+
+  return uri;
+}
 
 let cached = (global as any).mongoose;
 
@@ -10,10 +19,17 @@ if (!cached) {
 }
 
 export async function dbConnect() {
+  const uri = getMongoURI();
+
+  // ❌ agar URI nahi hai to DB connect skip karo
+  if (!uri) {
+    throw new Error("MongoDB not configured");
+  }
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => mongoose);
+    cached.promise = mongoose.connect(uri).then((mongoose) => mongoose);
   }
 
   cached.conn = await cached.promise;
