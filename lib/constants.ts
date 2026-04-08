@@ -7,6 +7,7 @@ export const BEDSHEET_SUBCATEGORIES = [
   { label: "Comforter Set", value: "comforter-set" },
   { label: "3pcs Bedsheet", value: "3pcs-bedsheet" },
   { label: "Single Pair Bedsheet", value: "single-pair-bedsheet" },
+  { label: "Water Proof Mattress Cover", value: "water-proof-mattress-cover" },
 ] as const;
 
 // Fabrics for 3pcs Bedsheet

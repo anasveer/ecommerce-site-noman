@@ -103,7 +103,7 @@ export default function ThreePcsBedsheet() {
   }
 
   return (
-    <section className="py-24 bg-[#0a0f1d]">
+    <section className="py-16 md:py-24 bg-[#0a0f1d]">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">

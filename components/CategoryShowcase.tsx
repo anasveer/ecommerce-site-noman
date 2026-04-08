@@ -22,6 +22,13 @@ const categories = [
       "c1.jpeg",
     href: "/category/bedsheet/comforter-set",
   },
+  {
+    title: "Water Proof Mattress Cover",
+    subtitle: "100% water proof mattress protectors.",
+    image:
+      "/c4.jpeg",
+    href: "/category/bedsheet/water-proof-mattress-cover",
+  },
 ];
 
 export default function CategoryShowcase() {
@@ -41,7 +48,7 @@ export default function CategoryShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
           {categories.map((category) => (
             <Link
               key={category.title}

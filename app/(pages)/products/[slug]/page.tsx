@@ -21,6 +21,12 @@ const CONTENT_MAP: any = {
     note: "7Pc Printed Comforter Set",
     details: ["1 King Size Filled Comforter", "1 King Size Bedsheet", "2 Quilted Pillow Cover", "2 Simple Pillow Cover", "1 Quilted Cushion Cover"],
     footer: "Premium Quality"
+  },
+  "water-proof-mattress-cover": {
+    fabric: "",
+    note: "PRINTED WATER PROOF MATTRESS COVER#✅ 👉100% water proof 💦mattress protector fitted Sheet Style✅",
+    details: ["Standard King size:72*78 Inch (6*6.5)", "💦 proof with bottom side pu lamination"],
+    footer: "100% Water Proof"
   }
 };
 

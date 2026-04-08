@@ -7,6 +7,7 @@ import CategoryShowcase from "../components/CategoryShowcase";
 import Showcase2 from "../components/showcase2";
 import Singal from "../components/SinglePair";
 import ThreePcsBedsheet from "../components/ThreePcsBedsheet";
+import WaterProofMattressCover from "../components/WaterProofMattressCover";
 import DigitalArtistryShowcase from "../components/pixel";
 import Room from "../components/room";
 import Look from "../components/look";
@@ -29,6 +30,7 @@ const page = () => {
        <Fabric /> 
        <Showcase2 />
         <Singal />
+       <WaterProofMattressCover />
       <DigitalArtistryShowcase />
       <Room />
       <Look />
