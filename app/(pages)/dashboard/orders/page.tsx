@@ -58,7 +58,7 @@ export default function OrdersPage() {
     async function loadOrders() {
       try {
         console.log('Loading orders...');
-        const res = await fetch('/api/orders');
+        const res = await fetch('/api/orders?admin=true');
         console.log('Orders API response status:', res.status);
         if (res.ok) {
           const data = await res.json();

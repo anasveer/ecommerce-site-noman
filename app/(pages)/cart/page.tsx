@@ -42,7 +42,7 @@ const CartPage = () => {
               />
               <div className="flex-1 min-w-0">
                 <h2 className="text-sm sm:text-base font-semibold text-gray-800 line-clamp-2">{item.title}</h2>
-                <p className="text-gray-600 text-xs mt-0.5">Code: {item.barcode}</p>
+                <p className="text-gray-600 text-sm mt-0.5">Code: {item.barcode}</p>
                 <p className="text-[#1EBD87] font-bold text-base mt-1">Rs. {item.price}</p>
                 <div className="flex items-center gap-2 mt-2">
                   <button

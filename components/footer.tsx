@@ -35,6 +35,7 @@ const Footer = () => {
               <li><a href="/category/bedsheet/comforter-set" className="hover:text-[#1EBD87] transition-colors">Comforter Set</a></li>
               <li><a href="/category/bedsheet/single-pair-bedsheet" className="hover:text-[#1EBD87] transition-colors">Single Pair Bedsheet</a></li>
               <li><a href="/my-orders" className="hover:text-[#1EBD87] transition-colors">My Order</a></li>
+              <li><a href="/docs" className="hover:text-[#1EBD87] transition-colors">Docs</a></li>
             </ul>
           </div>
 

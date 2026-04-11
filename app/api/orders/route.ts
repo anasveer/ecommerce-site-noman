@@ -60,12 +60,18 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const phone = searchParams.get("phone");
+    const admin = searchParams.get("admin");
+
+    await dbConnect();
+
+    if (admin === "true") {
+      const orders = await OrderModel.find({}).sort({ createdAt: -1 }).lean();
+      return NextResponse.json(orders);
+    }
 
     if (!phone || !phone.trim()) {
       return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
-
-    await dbConnect();
 
     const orders = await OrderModel.find({ "user.phone": phone }).sort({ createdAt: -1 }).lean();
 

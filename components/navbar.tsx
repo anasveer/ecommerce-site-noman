@@ -1,11 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingCart, Menu, X, ChevronDown } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X, ChevronDown, Heart } from 'lucide-react';
 import { FaBed, FaCouch } from 'react-icons/fa';
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [query, setQuery] = useState("");
   const router = useRouter();
   const { totalItems } = useCart();
+  const { totalWishlist } = useWishlist();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,6 +92,7 @@ const Navbar = () => {
             </div>
             <a href="/my-orders" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/my-orders" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>My Orders</a>
             <a href="/cart" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/cart" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>View Cart</a>
+            <a href="/docs" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/docs" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>Docs</a>
           </div>
 
           {/* Search Bar */}
@@ -110,6 +113,15 @@ const Navbar = () => {
 
           {/* Right Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Wishlist Icon */}
+            <Link href="/wishlist" className="p-2 text-gray-800 hover:text-red-500 transition-colors relative">
+              <Heart className="h-6 w-6" />
+              {totalWishlist > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-[10px] font-bold min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 animate-bounce">
+                  {totalWishlist > 99 ? '99+' : totalWishlist}
+                </span>
+              )}
+            </Link>
             {/* Cart Icon with Badge */}
             <Link href="/cart" className="p-2 text-gray-800 hover:text-[#1EBD87] transition-colors relative">
               <ShoppingCart className="h-6 w-6" />
@@ -206,6 +218,7 @@ const Navbar = () => {
             </Link>
 
             <a href="/my-orders" className={`block px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname === '/my-orders' ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}>My Orders</a>
+            <a href="/docs" className={`block px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname === '/docs' ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}>Docs</a>
 
           </div>
 

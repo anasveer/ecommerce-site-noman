@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
-import { ShoppingCart, Truck, RefreshCcw, ChevronDown } from "lucide-react";
+import { useWishlist } from "@/context/WishlistContext";
+import { ShoppingCart, Heart, Truck, RefreshCcw, ChevronDown } from "lucide-react";
 
 interface ProductDetailsClientProps {
   product: {
@@ -30,6 +31,8 @@ export default function ProductDetailsClient({ product, relatedColors, content }
   const [added, setAdded] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const { addToCart, items } = useCart();
+  const { addToWishlist, removeFromWishlist, isWishlisted } = useWishlist();
+  const wishlisted = isWishlisted(product._id);
 
   const faqs = [
     {
@@ -140,6 +143,23 @@ export default function ProductDetailsClient({ product, relatedColors, content }
                 <ShoppingCart className="h-5 w-5" />
                 Add to Cart
               </div>
+            </button>
+            <button
+              onClick={() => wishlisted ? removeFromWishlist(product._id) : addToWishlist({
+                id: product._id,
+                slug: product.slug,
+                title: product.title,
+                price: product.price,
+                image: product.images?.[0]?.url || '',
+                mainCategory: product.mainCategory,
+                subCategory: product.subCategory,
+                kg: product.kg ?? 1,
+              })}
+              className={`w-14 h-14 rounded-2xl flex items-center justify-center border transition-all ${
+                wishlisted ? 'bg-red-500 border-red-500 text-white' : 'bg-white border-gray-200 text-gray-400 hover:border-red-400 hover:text-red-500'
+              }`}
+            >
+              <Heart className={`h-5 w-5 ${wishlisted ? 'fill-current' : ''}`} />
             </button>
             <button
               onClick={() => {

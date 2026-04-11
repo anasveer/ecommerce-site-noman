@@ -256,8 +256,8 @@ export default function CheckoutPage() {
                   <img src={item.image} alt={item.title} className="w-16 h-16 object-cover rounded-lg flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-sm text-gray-800 line-clamp-1">{item.title}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">Qty: {item.quantity} | Rs. {item.price}</div>
-                    <div className="text-xs text-gray-400">{item.subCategory?.replace(/-/g, ' ')}</div>
+                    <div className="text-sm text-gray-700 mt-0.5">Qty: {item.quantity} | Rs. {item.price}</div>
+                    <div className="text-sm text-gray-600">{item.subCategory?.replace(/-/g, ' ')}</div>
                   </div>
                   <div className="text-sm font-bold text-[#1EBD87] flex-shrink-0">Rs. {item.price * item.quantity}</div>
                 </div>

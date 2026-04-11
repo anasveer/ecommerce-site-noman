@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { CartProvider } from "../context/CartContext";
+import { WishlistProvider } from "../context/WishlistContext";
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 
 
@@ -30,10 +31,12 @@ export default function RootLayout({
       </head>
       <body className='font-nunito'>
         <CartProvider>
+          <WishlistProvider>
           <Navbar />
           {children}
           <WhatsAppFloat />
           <Footer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>
