@@ -48,7 +48,7 @@ const Navbar = () => {
                 <img src="/logo.png" alt="universal" className="w-full h-full object-cover rounded-full" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className=" text-xl sm:text-2xl text-gray-800 font-bold italic font-serif">
+                <span className=" text-lg sm:text-2xl text-gray-800 font-bold italic font-serif">
                   Universal <span className="text-[#1EBD87] font-light">Bedding</span>
                 </span>
                 {/* <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
