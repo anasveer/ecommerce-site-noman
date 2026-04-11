@@ -7,7 +7,7 @@ const Testimonials = () => {
     {
       name: "Ahmed Khan",
       rating: 5,
-      content: "The 3pcs bedsheet set from Hania Textile is absolutely amazing! The quality is top-notch and the colors are vibrant. Highly recommend!"
+      content: "The 3pcs bedsheet set from Universal Bedding is absolutely amazing! The quality is top-notch and the colors are vibrant. Highly recommend!"
     },
     {
       name: "Fatima Ali",
@@ -22,7 +22,7 @@ const Testimonials = () => {
     {
       name: "Ayesha Noor",
       rating: 5,
-      content: "Hania Textile's 3pcs bedsheet has transformed our bedroom. The stitching is perfect and it's very durable."
+      content: "Universal Bedding's 3pcs bedsheet has transformed our bedroom. The stitching is perfect and it's very durable."
     },
     {
       name: "Imran Hussain",
@@ -37,7 +37,7 @@ const Testimonials = () => {
     {
       name: "Bilal Ahmed",
       rating: 5,
-      content: "Excellent 3pcs bedsheet. The fit is perfect and the colors don't fade. Hania Textile is my go-to brand now."
+      content: "Excellent 3pcs bedsheet. The fit is perfect and the colors don't fade. Universal Bedding is my go-to brand now."
     },
     {
       name: "Sadia Khan",
@@ -47,29 +47,28 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-[#f4e4bc] to-[#d4af37] overflow-hidden">
+    <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-center text-3xl font-bold text-[#0a0f1d] mb-12">What Our Customers Say</h2>
+        <h2 className="text-center text-3xl font-bold text-gray-800 mb-12">What Our Customers Say</h2>
         
         {/* Main Wrapper */}
         <div className="relative flex overflow-hidden group">
           {/* Scrolling Container */}
           <div className="flex animate-scroll whitespace-nowrap group-hover:pause-animation">
-            {/* Duplicate the array to ensure seamless loop */}
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div 
                 key={index} 
-                className="inline-block w-[280px] sm:w-[350px] mx-4 bg-white rounded-lg shadow-lg p-6 whitespace-normal align-top"
+                className="inline-block w-[280px] sm:w-[350px] mx-4 bg-white rounded-2xl border border-[#1EBD87]/30 shadow-[0_8px_40px_rgba(30,189,135,0.25)] hover:shadow-[0_8px_40px_rgba(30,189,135,0.4)] p-6 whitespace-normal align-top transition-shadow duration-300"
               >
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-5 h-5 text-[#1EBD87] fill-current" />
                   ))}
                 </div>
-                <p className="text-gray-900 mb-4 text-sm sm:text-base">
+                <p className="text-gray-600 mb-4 text-sm sm:text-base">
                   "{testimonial.content}"
                 </p>
-                <p className="font-bold text-[#0a0f1d] text-right">- {testimonial.name}</p>
+                <p className="font-bold text-gray-800 text-right">- {testimonial.name}</p>
               </div>
             ))}
           </div>

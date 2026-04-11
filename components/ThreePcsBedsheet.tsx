@@ -94,7 +94,7 @@ export default function ThreePcsBedsheet() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-[#0a0f1d]">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <p className="text-gray-400">Loading products...</p>
         </div>
@@ -103,15 +103,15 @@ export default function ThreePcsBedsheet() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a0f1d]">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-2">
-              3pcs Bedsheet <span className="text-[#d4af37]">Collections</span>
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+              3pcs Bedsheet <span className="text-[#1EBD87]">Collections</span>
             </h2>
-            <p className="text-gray-400">
+            <p className="text-gray-500">
               Explore our 3-piece bedsheet collection
             </p>
           </div>
@@ -120,9 +120,9 @@ export default function ThreePcsBedsheet() {
           <div className="hidden lg:block">
             <Link
               href="/category/bedsheet/3pcs-bedsheet"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+              className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135),0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
             >
-              View 3pcs Collection <span className="inline-block ml-2 arrow-shift">→</span>
+              View 3pcs Collection <span className="inline-block ml-2">→</span>
             </Link>
           </div>
         </div>
@@ -134,8 +134,8 @@ export default function ThreePcsBedsheet() {
               onClick={() => handleFabricClick(null)}
               className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                 selectedFabric === null
-                  ? "bg-[#d4af37] text-black"
-                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                  ? "bg-[#1EBD87] text-white"
+                  : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
               }`}
             >
               All Fabrics
@@ -146,8 +146,8 @@ export default function ThreePcsBedsheet() {
                 onClick={() => handleFabricClick(fabric.value)}
                 className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                   selectedFabric === fabric.value
-                    ? "bg-[#d4af37] text-black"
-                    : "bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 text-gray-300 "
+                    ? "bg-[#1EBD87] text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
                 }`}
               >
                 {fabric.label}
@@ -173,7 +173,7 @@ export default function ThreePcsBedsheet() {
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
             href="/category/bedsheet/3pcs-bedsheet"
-            className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+            className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135),0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
           >
             View 3pcs Collection <span className="inline-block ml-2">→</span>
           </Link>

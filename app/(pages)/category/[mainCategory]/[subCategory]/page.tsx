@@ -62,21 +62,21 @@ export default function CategoryPage() {
     : products;
 
   return (
-    <section className="min-h-screen py-12 bg-[#0a0f1d] mt-13">
+    <section className="min-h-screen py-12 bg-white mt-13">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-8">
-          <p className="text-[#d4af37] text-xs uppercase tracking-[0.3em] font-bold mb-3">
+          <p className="text-[#1EBD87] text-xs uppercase tracking-[0.3em] font-bold mb-3">
             Category Products
           </p>
-          <h1 className="text-4xl font-bold text-white capitalize">
+          <h1 className="text-4xl font-bold text-gray-800 capitalize">
             {subCategory.replace(/-/g, " ")}
           </h1>
-          <p className="text-gray-400 mt-3">
+          <p className="text-gray-500 mt-3">
             Browse all products from this category
           </p>
         </div>
 
-        {/* Fabric Filter - Show only if available */}
+        {/* Fabric Filter */}
         {fabricOptions.length > 0 && (
           <div className="mb-8">
             <div className="flex gap-3 flex-wrap">
@@ -84,8 +84,8 @@ export default function CategoryPage() {
                 onClick={() => setSelectedFabric(null)}
                 className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                   selectedFabric === null
-                    ? "bg-[#d4af37] text-black"
-                    : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                    ? "bg-[#1EBD87] text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
                 }`}
               >
                 All Fabrics
@@ -96,8 +96,8 @@ export default function CategoryPage() {
                   onClick={() => setSelectedFabric(fabric.value)}
                   className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                     selectedFabric === fabric.value
-                      ? "bg-[#d4af37] text-black"
-                      : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                      ? "bg-[#1EBD87] text-white"
+                      : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
                   }`}
                 >
                   {fabric.label}
@@ -116,7 +116,7 @@ export default function CategoryPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-gray-800 bg-[#0f172a] p-10 text-center">
+          <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center">
             <p className="text-gray-400">No products found in this category.</p>
           </div>
         )}

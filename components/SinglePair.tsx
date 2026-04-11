@@ -94,7 +94,7 @@ export default function ProductSectionSinglePair() {
 
   if (loading) {
     return (
-      <section className="py-24 bg-[#0a0f1d]">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <p className="text-gray-400">Loading products...</p>
         </div>
@@ -103,15 +103,15 @@ export default function ProductSectionSinglePair() {
   }
 
   return (
-    <section className="py-24 bg-[#0a0f1d]">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f5e8b2] to-[#b08c2e] mb-2">
-              Single Pair Bedsheet <span className="text-[#d4af37]">Edition</span>
+            <h2 className="text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-800 mb-2">
+              Single Pair Bedsheet <span className="text-[#1EBD87]">Edition</span>
             </h2>
-            <p className="text-gray-300 max-w-xl">
+            <p className="text-gray-500 max-w-xl">
               Experience premium collection for extraordinary softness.
             </p>
           </div>
@@ -120,9 +120,9 @@ export default function ProductSectionSinglePair() {
           <div className="hidden lg:block">
             <Link
               href="/category/bedsheet/single-pair-bedsheet"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+              className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
             >
-              View Single Pair Bedsheet <span className="inline-block ml-2 arrow-shift">→</span>
+              View Single Pair Bedsheet <span className="inline-block ml-2">→</span>
             </Link>
           </div>
         </div>
@@ -134,8 +134,8 @@ export default function ProductSectionSinglePair() {
               onClick={() => handleFabricClick(null)}
               className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                 selectedFabric === null
-                  ? "bg-[#d4af37] text-black"
-                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+                  ? "bg-[#1EBD87] text-white"
+                  : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
               }`}
             >
               All Fabrics
@@ -146,8 +146,8 @@ export default function ProductSectionSinglePair() {
                 onClick={() => handleFabricClick(fabric.value)}
                 className={`px-4 py-2 rounded-lg font-semibold transition whitespace-nowrap ${
                   selectedFabric === fabric.value
-                    ? "bg-[#d4af37] text-black"
-                    : "bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 text-gray-300"
+                    ? "bg-[#1EBD87] text-white"
+                    : "bg-white border border-gray-200 text-gray-600 hover:border-[#1EBD87] hover:text-[#1EBD87]"
                 }`}
               >
                 {fabric.label}
@@ -156,7 +156,7 @@ export default function ProductSectionSinglePair() {
           </div>
         </div>
 
-        {/* Products Grid - 3 cards for single pair */}
+        {/* Products Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {displayProducts.slice(0, 8).map((product) => (
             <ProductCard key={product._id} product={product} />
@@ -173,7 +173,7 @@ export default function ProductSectionSinglePair() {
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
             href="/category/bedsheet/single-pair-bedsheet"
-            className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+            className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
           >
             View Single Pair Bedsheet <span className="inline-block ml-2">→</span>
           </Link>

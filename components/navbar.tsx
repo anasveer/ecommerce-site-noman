@@ -36,7 +36,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-[#0a0f1d] text-white fixed top-0 left-0 right-0 z-50 border-b border-gray-800 font-sans">
+    <nav className="text-white fixed top-0 left-0 right-0 z-50 border-b border-gray-800 font-sans bg-white">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -46,8 +46,8 @@ const Navbar = () => {
                 <img src="/logo.png" alt="universal" className="w-full h-full object-cover rounded-full" />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className=" text-xl sm:text-2xl font-bold italic font-serif">
-                  Universal <span className="text-[#d4af37] font-light">Bedding</span>
+                <span className=" text-xl sm:text-2xl text-gray-800 font-bold italic font-serif">
+                  Universal <span className="text-[#1EBD87] font-light">Bedding</span>
                 </span>
                 {/* <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-medium hidden sm:block">
                   Premium Collections
@@ -58,26 +58,26 @@ const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-1 lg:space-x-4">
-            <a href="/" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>
+            <a href="/" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>
               Home
             </a>
             <div className="relative group">
-              <button className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 ${pathname.startsWith("/category") ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 group-hover:text-[#d4af37]"}`}>
+              <button className={`flex items-center gap-1 px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 ${pathname.startsWith("/category") ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 group-hover:text-[#1EBD87]"}`}>
                 Collections <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute left-0 mt-1 w-56 bg-[#0d1425] border border-gray-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
+              <div className="absolute left-0 mt-1 w-56 bg-white border border-gray-200 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top scale-95 group-hover:scale-100 z-50">
                 <div className="p-2">
                   {categories.map((cat) => (
                     <div key={cat.name}>
-                      <a href={cat.href} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-300 hover:text-[#d4af37] hover:bg-white/5 rounded-lg transition-colors">
-                        <span className="text-[#d4af37] bg-[#d4af37]/10 p-2 rounded-lg">{cat.icon}</span>
+                      <a href={cat.href} className="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:text-[#1EBD87] hover:bg-gray-50 rounded-lg transition-colors">
+                        <span className="text-[#1EBD87] bg-[#1EBD87]/10 p-2 rounded-lg">{cat.icon}</span>
                         <span className="font-medium">{cat.name}</span>
                       </a>
                       {cat.sub && cat.sub.length > 0 && (
                         <div className="ml-8 mt-1 space-y-1">
                           {cat.sub.map((sub) => (
-                            <a key={sub.name} href={sub.href} className="flex items-center gap-2 px-4 py-2 text-xs text-gray-400 hover:text-[#d4af37] hover:bg-white/5 rounded-lg transition-colors">
-                              <span className="text-[#d4af37]">{sub.icon}</span>
+                            <a key={sub.name} href={sub.href} className="flex items-center gap-2 px-4 py-2 text-xs text-gray-500 hover:text-[#1EBD87] hover:bg-gray-50 rounded-lg transition-colors">
+                              <span className="text-[#1EBD87]">{sub.icon}</span>
                               <span>{sub.name}</span>
                             </a>
                           ))}
@@ -88,8 +88,8 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            <a href="/my-orders" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/my-orders" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>My Orders</a>
-            <a href="/cart" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/cart" ? "bg-gradient-to-r from-[#d4af37] to-[#f1d592] bg-clip-text text-transparent border-b-2 border-[#d4af37]" : "text-gray-300 hover:text-[#d4af37]"}`}>View Cart</a>
+            <a href="/my-orders" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/my-orders" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>My Orders</a>
+            <a href="/cart" className={`px-3 py-2 rounded-md text-sm lg:text-base font-medium transition-all duration-200 hover:bg-white/5 ${pathname === "/cart" ? "text-[#1EBD87] border-b-2 border-[#1EBD87]" : "text-gray-800 hover:text-[#1EBD87]"}`}>View Cart</a>
           </div>
 
           {/* Search Bar */}
@@ -100,7 +100,7 @@ const Navbar = () => {
                 placeholder="Search by title, barcode..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="w-full bg-[#0f172a] border border-gray-800 rounded-full py-2 px-5 text-sm text-white focus:outline-none focus:border-[#d4af37]"
+                className="w-full bg-gray-100 border border-gray-300 rounded-full py-2 px-5 text-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:border-gray-400"
               />
               <button type="submit" className="absolute right-3 top-2 text-gray-500">
                 <Search className="w-4 h-4" />
@@ -111,10 +111,10 @@ const Navbar = () => {
           {/* Right Icons */}
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Cart Icon with Badge */}
-            <Link href="/cart" className="p-2 text-gray-300 hover:text-[#d4af37] transition-colors relative">
+            <Link href="/cart" className="p-2 text-gray-800 hover:text-[#1EBD87] transition-colors relative">
               <ShoppingCart className="h-6 w-6" />
               {totalItems > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-[#d4af37] text-[#0a0f1d] text-[10px] font-bold min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 animate-bounce">
+                <span className="absolute -top-0.5 -right-0.5 bg-[#1EBD87] text-white text-[10px] font-bold min-w-[18px] h-[18px] rounded-full flex items-center justify-center px-1 animate-bounce">
                   {totalItems > 99 ? '99+' : totalItems}
                 </span>
               )}
@@ -122,7 +122,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all active:scale-95"
+              className="md:hidden p-2 rounded-lg text-gray-800 hover:text-[#1EBD87] hover:bg-gray-100 transition-all active:scale-95"
               aria-label="Toggle Menu"
             >
               {isMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
@@ -137,10 +137,10 @@ const Navbar = () => {
           className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 ${isMenuOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setIsMenuOpen(false)}
         />
-        <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-[#0d1425] shadow-2xl flex flex-col border-l border-gray-800">
-          <div className="p-6 flex items-center justify-between border-b border-gray-800">
-            <span className="text-xl font-bold italic">Menu</span>
-            <button onClick={() => setIsMenuOpen(false)} className="p-2 text-gray-400 hover:text-white">
+        <div className="absolute right-0 top-0 h-full w-[80%] max-w-sm bg-white shadow-2xl flex flex-col border-l border-gray-200">
+          <div className="p-6 flex items-center justify-between border-b border-gray-200">
+            <span className="text-xl font-bold italic text-gray-800">Menu</span>
+            <button onClick={() => setIsMenuOpen(false)} className="p-2 text-gray-500 hover:text-[#1EBD87]">
               <X className="h-6 w-6" />
             </button>
           </div>
@@ -153,7 +153,7 @@ const Navbar = () => {
                   placeholder="Search..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full bg-[#0f172a] border border-gray-800 rounded-full py-2 px-5 text-sm text-white focus:outline-none focus:border-[#d4af37]"
+                  className="w-full bg-gray-100 border border-gray-300 rounded-full py-2 px-5 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-gray-400"
                 />
                 <button type="submit" className="absolute right-3 top-2 text-gray-500">
                   <Search className="w-4 h-4" />
@@ -161,12 +161,12 @@ const Navbar = () => {
               </form>
             </div>
 
-            <a href="#" className="block px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all">Home</a>
+            <a href="/" className={`block px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname === '/' ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}>Home</a>
 
             <div className="space-y-1">
               <button
                 onClick={() => setIsCategoryOpen(!isCategoryOpen)}
-                className="w-full flex items-center justify-between px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all"
+                className={`w-full flex items-center justify-between px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname.startsWith('/category') ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}
               >
                 Collections
                 <ChevronDown className={`h-5 w-5 transition-transform duration-300 ${isCategoryOpen ? 'rotate-180' : ''}`} />
@@ -174,15 +174,15 @@ const Navbar = () => {
               <div className={`overflow-hidden transition-all duration-300 ${isCategoryOpen ? 'max-h-96' : 'max-h-0'}`}>
                 {categories.map((cat) => (
                   <div key={cat.name}>
-                    <a href={cat.href} className="flex items-center gap-4 px-8 py-3 text-gray-400 hover:text-[#d4af37] transition-colors">
-                      <span className="p-2 bg-gray-900 rounded-lg">{cat.icon}</span>
+                    <a href={cat.href} className="flex items-center gap-4 px-8 py-3 text-gray-700 hover:text-[#1EBD87] hover:bg-gray-50 transition-colors rounded-lg">
+                      <span className="text-[#1EBD87] bg-[#1EBD87]/10 p-2 rounded-lg">{cat.icon}</span>
                       {cat.name}
                     </a>
                     {cat.sub && cat.sub.length > 0 && (
                       <div className="ml-12 space-y-1">
                         {cat.sub.map((sub) => (
-                          <a key={sub.name} href={sub.href} className="flex items-center gap-3 px-8 py-2 text-sm text-gray-500 hover:text-[#d4af37] transition-colors">
-                            <span className="text-[#d4af37]">{sub.icon}</span>
+                          <a key={sub.name} href={sub.href} className="flex items-center gap-3 px-8 py-2 text-sm text-gray-500 hover:text-[#1EBD87] transition-colors">
+                            <span className="text-[#1EBD87]">{sub.icon}</span>
                             {sub.name}
                           </a>
                         ))}
@@ -196,21 +196,21 @@ const Navbar = () => {
             <Link
               href="/cart"
               onClick={() => setIsMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all"
+              className={`flex items-center gap-3 px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname === '/cart' ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}
             >
               <ShoppingCart className="h-5 w-5" />
               Cart
               {totalItems > 0 && (
-                <span className="ml-auto bg-[#d4af37] text-[#0a0f1d] text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
+                <span className="ml-auto bg-[#1EBD87] text-white text-xs font-bold px-2 py-0.5 rounded-full">{totalItems}</span>
               )}
             </Link>
 
-             <a href="/my-orders" className="block px-4 py-4 text-lg font-medium text-gray-200 hover:bg-[#d4af37]/5 hover:text-[#d4af37] rounded-xl transition-all">My Order</a>
+            <a href="/my-orders" className={`block px-4 py-4 text-lg font-medium rounded-xl transition-all ${pathname === '/my-orders' ? 'text-[#1EBD87] border-l-4 border-[#1EBD87] bg-[#1EBD87]/5' : 'text-gray-800 hover:bg-gray-50 hover:text-[#1EBD87]'}`}>My Orders</a>
 
           </div>
 
-          <div className="p-6 border-t border-gray-800">
-            <div className="flex justify-center gap-6 text-gray-500 py-2">
+          <div className="p-6 border-t border-gray-200">
+            <div className="flex justify-center gap-6 text-gray-400 py-2">
               <span className="text-xs uppercase tracking-widest">Est. 2024</span>
             </div>
           </div>

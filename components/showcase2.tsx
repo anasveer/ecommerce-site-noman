@@ -10,7 +10,7 @@ const QualityShowcase = () => {
            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
         </svg>
       ),
-      color: "bg-[#d4af37]"
+      color: "bg-[#1EBD87]"
     },
     {
       title: "Soft Velour",
@@ -20,32 +20,30 @@ const QualityShowcase = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       ),
-      color: "bg-blue-600"
+      color: "bg-[#1EBD87]/80"
     },
     {
      title: "Durable Cotton",
   description: "High-quality cotton fibers engineered for strength and breathability, offering long-lasting comfort and softness for everyday use.",
       icon: (
-        <svg className="w-6 h-6 text-[#d4af37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[#1EBD87]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       ),
-      color: "border border-[#d4af37]/30"
+      color: "border border-[#1EBD87]/30 bg-[#1EBD87]/10"
     }
   ];
 
   return (
-    <section className="py-24 bg-[#0a0f1d] overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
           {/* Left: Double Image Overlay Style */}
           <div className="flex-1 relative w-full max-w-xl">
-            {/* Background Decorative Element */}
-            <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#d4af37]/10 blur-[100px] rounded-full"></div>
+            <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#1EBD87]/10 blur-[100px] rounded-full"></div>
             
-            {/* Main Large Image */}
-            <div className="relative z-10 rounded-[40px] overflow-hidden border border-gray-800 shadow-2xl h-[420px] lg:h-[500px]">
+            <div className="relative z-10 rounded-[40px] overflow-hidden border border-gray-200 shadow-xl h-[420px] lg:h-[500px]">
               <img 
                 src="/s3.png" 
                 alt="Main Fabric" 
@@ -53,29 +51,28 @@ const QualityShowcase = () => {
               />
             </div>
 
-            {/* Overlapping Secondary Image */}
-            <div className="absolute -bottom-10 -left-10 z-20 w-48 h-48 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border-4 border-[#0a0f1d] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+            <div className="absolute -bottom-10 -left-10 z-20 w-48 h-48 sm:w-64 sm:h-64 rounded-3xl overflow-hidden border-4 border-white shadow-[0_20px_50px_rgba(0,0,0,0.15)] group">
               <img 
                 src="/s4.png" 
                 alt="Fabric Detail" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
             </div>
           </div>
 
           {/* Right: Content Section */}
           <div className="flex-1 space-y-10">
             <div className="space-y-4">
-              <span className="text-[#d4af37] text-xs font-bold tracking-[0.4em] uppercase">3D Crystal Cotton Premium</span>
-              <h2 className="text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+              <span className="text-[#1EBD87] text-xs font-bold tracking-[0.4em] uppercase">3D Crystal Cotton Premium</span>
+              <h2 className="text-4xl lg:text-5xl font-extrabold text-gray-800 leading-tight">
                 Single Pair Bedsheet <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] to-[#f1d592]">
+                <span className="text-[#1EBD87]">
                   Elite Comfort & Crystal Softness
                 </span>
               </h2>
-              <p className="text-gray-300 max-w-lg">
-                Engineered with modern 3D crystallization technology, this fine cotton blend delivers a luminous texture, silhouette definition, and breathable resilience for an upscale sleep experience.
+              <p className="text-gray-500 max-w-lg">
+                Engineered with modern 3D crystallization technology, this fine cotton blend delivers a luminous texture.
               </p>
             </div>
 
@@ -86,8 +83,8 @@ const QualityShowcase = () => {
                     {item.icon}
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-white font-bold text-xl">{item.title}</h3>
-                    <p className="text-gray-400 leading-relaxed text-sm">
+                    <h3 className="text-gray-800 font-bold text-xl">{item.title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-sm">
                       {item.description}
                     </p>
                   </div>

@@ -40,26 +40,26 @@ export default async function ProductSectionWaterProofMattressCover() {
   const products: Product[] = await getProducts();
 
   return (
-    <section className="py-24 bg-[#0a0f1d]">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-3xl font-bold text-white mb-2">
-              Water Proof Mattress Cover <span className="text-[#d4af37]">Now</span>
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+              Water Proof Mattress Cover <span className="text-[#1EBD87]">Now</span>
             </h2>
-            <p className="text-gray-400">
+            <p className="text-gray-500">
               Explore our latest Water Proof Mattress Cover collection
             </p>
           </div>
 
-          {/* Desktop View Button (Hidden on Mobile) */}
+          {/* Desktop View Button */}
           <div className="hidden lg:block">
             <Link
               href="/category/bedsheet/water-proof-mattress-cover"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+              className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
             >
-              View Water Proof Mattress Cover <span className="inline-block ml-2 arrow-shift">→</span>
+              View Water Proof Mattress Cover <span className="inline-block ml-2">→</span>
             </Link>
           </div>
         </div>
@@ -71,11 +71,11 @@ export default async function ProductSectionWaterProofMattressCover() {
           ))}
         </div>
 
-        {/* Mobile View Button (Only Visible on Mobile at the Bottom) */}
+        {/* Mobile View Button */}
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
             href="/category/bedsheet/water-proof-mattress-cover"
-            className="px-5 py-3 rounded-full text-medium font-semibold text-white bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+            className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
           >
             View Water Proof Mattress Cover <span className="inline-block ml-2">→</span>
           </Link>
