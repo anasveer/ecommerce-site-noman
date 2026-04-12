@@ -17,6 +17,7 @@ type Product = {
   price: number;
   mainCategory: string;
   subCategory?: string;
+  barcode?: string;
   kg?: number;
   images: ProductImage[];
 };
@@ -37,7 +38,7 @@ export default function ProductCard({ product }: { product: Product }) {
       price: product.price,
       image: product.images?.[0]?.url || "",
       quantity: 1,
-      barcode: "",
+      barcode: product.barcode || "",
       mainCategory: product.mainCategory,
       subCategory: product.subCategory,
       kg: product.kg ?? 1,
@@ -109,8 +110,8 @@ export default function ProductCard({ product }: { product: Product }) {
           onClick={handleAddToCart}
           className={`w-full flex items-center justify-center gap-2 py-2 rounded-lg text-sm font-semibold transition-all duration-300 ${
             added
-              ? 'bg-green-500 text-white'
-              : 'bg-[#1EBD87] text-white md:bg-[#1EBD87]/10 md:text-[#1EBD87] md:hover:bg-[#1EBD87] md:hover:text-white border border-[#1EBD87] md:border-[#1EBD87]/30 md:hover:border-[#1EBD87]'
+              ? 'bg-red-500 text-white'
+              : 'bg-[#1EBD87] text-white md:bg-[#1EBD87]/10 md:text-[#0F6E4F] md:hover:bg-[#1EBD87] md:hover:text-white border border-[#1EBD87] md:border-[#1EBD87]/30 md:hover:border-[#1EBD87]'
           }`}
         >
           <ShoppingCart className="w-4 h-4" />

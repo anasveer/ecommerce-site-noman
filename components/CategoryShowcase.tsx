@@ -45,15 +45,15 @@ export default function CategoryShowcase() {
           
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
           {categories.map((category) => (
             <Link
               key={category.title}
               href={category.href}
-              className="group relative overflow-hidden rounded-[2rem] bg-transparent p-4 sm:border sm:border-gray-200 sm:bg-white sm:p-5 sm:shadow-[0_20px_45px_rgba(0,0,0,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(30,189,135),0.18)]"
+              className="group relative overflow-hidden rounded-[2rem] bg-white p-1 border border-gray-200 shadow-[0_8px_30px_rgba(30,189,135,0.10)] sm:p-5 sm:shadow-[0_20px_45px_rgba(0,0,0,0.08)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(30,189,135,0.18)] hover:border-[#1EBD87]/30"
             >
-              <div className="hidden sm:block absolute -top-16 -left-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#1EBD87]/15 to-transparent blur-2xl" />
-              <div className="hidden sm:block absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#1EBD87]/10 to-transparent blur-2xl" />
+              <div className="block absolute -top-16 -left-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#1EBD87]/15 to-transparent blur-2xl" />
+              <div className="block absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br from-[#1EBD87]/10 to-transparent blur-2xl" />
 
               <div className="relative flex h-full flex-col items-center gap-4 text-center">
                 <div className="rounded-full bg-gradient-to-br from-[#1EBD87] via-[#5dd4a8] to-[#1EBD87] p-[2px] shadow-[0_15px_30px_rgba(30,189,135),0.2)]">
@@ -71,7 +71,7 @@ export default function CategoryShowcase() {
                   <p className="hidden sm:block text-sm leading-snug text-gray-500">{category.subtitle}</p>
                 </div>
 
-                <span className="mt-auto hidden sm:inline-flex items-center gap-2 rounded-full border border-[#1EBD87]/40 bg-[#1EBD87]/10 px-4 py-2 text-xs font-semibold text-[#1EBD87] transition duration-300 group-hover:bg-[#1EBD87] group-hover:text-white">
+                <span className="mt-auto inline-flex items-center gap-2 rounded-full border border-[#1EBD87]/40 bg-[#1EBD87]/10 px-4 py-2 text-xs font-semibold text-[#1EBD87] transition duration-300 group-hover:bg-[#1EBD87] group-hover:text-white">
                   View page <span>→</span>
                 </span>
               </div>

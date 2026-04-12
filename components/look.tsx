@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const SanctuaryLookbook = () => {
   return (
-    <section className="py-35 sm:py-24 bg-white overflow-hidden font-sans">
+    <section className="py-20 md:py-24 bg-white overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -28,22 +28,7 @@ const SanctuaryLookbook = () => {
             <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-1000"></div>
           </div>
 
-          {/* Interactive Hotspots */}
-          <div className="absolute inset-0 z-20 pointer-events-none">
-            <div className="absolute top-[68%] left-[41%] pointer-events-auto">
-              <div className="relative">
-                <div className="w-4 h-4 bg-[#1EBD87] rounded-full animate-ping absolute inset-0 opacity-75"></div>
-                <div className="w-4 h-4 bg-[#1EBD87] rounded-full border-2 border-white shadow-[0_0_15px_rgba(30,189,135,0.8)] relative z-10"></div>
-              </div>
-            </div>
-
-            <div className="absolute top-[54%] left-[60%] pointer-events-auto">
-              <div className="relative">
-                <div className="w-4 h-4 bg-[#1EBD87] rounded-full animate-ping absolute inset-0 opacity-75"></div>
-                <div className="w-4 h-4 bg-[#1EBD87] rounded-full border-2 border-white shadow-[0_0_15px_rgba(30,189,135,0.8)] relative z-10"></div>
-              </div>
-            </div>
-          </div>
+         
 
           {/* Floating Shop Card */}
           <div className="absolute bottom-[-50] right-4 translate-y-1/2 sm:translate-y-0 sm:bottom-12 sm:right-12 z-30 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300 w-[calc(100%-2rem)] sm:w-[380px] hidden sm:block">

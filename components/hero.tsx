@@ -51,14 +51,14 @@ const HeroSlider = () => {
             alt={slide.alt}
             className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
               activeSlide === index
-                ? 'translate-x-0 opacity-100'
+                ? 'translate-x-0 opacity-80'
                 : index < activeSlide
                 ? '-translate-x-full opacity-0'
                 : 'translate-x-full opacity-0'
             }`}
           />
         ))}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
       </div>
 
       <div className="relative h-full max-w-7xl mx-auto px-4 flex items-center mt-5">

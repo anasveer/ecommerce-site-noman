@@ -80,10 +80,31 @@ export default function ProductDetailsClient({ product, relatedColors, content }
 </div>
 
         <div className="space-y-5">
-          <span className="text-[#1EBD87] text-xs font-bold tracking-widest uppercase bg-[#1EBD87]/10 px-3 py-1 rounded-full">
-            Code: {product.barcode}
-          </span>
-          <h1 className="text-4xl font-extrabold mt-5 text-gray-800">{product.title}</h1>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <span className="text-[#1EBD87] text-xs font-bold tracking-widest uppercase bg-[#1EBD87]/10 px-3 py-1 rounded-full">
+                Code: {product.barcode}
+              </span>
+              <h1 className="text-4xl font-extrabold mt-5 text-gray-800">{product.title}</h1>
+            </div>
+            <button
+              onClick={() => wishlisted ? removeFromWishlist(product._id) : addToWishlist({
+                id: product._id,
+                slug: product.slug,
+                title: product.title,
+                price: product.price,
+                image: product.images?.[0]?.url || '',
+                mainCategory: product.mainCategory,
+                subCategory: product.subCategory,
+                kg: product.kg ?? 1,
+              })}
+              className={`flex-shrink-0 mt-1 w-11 h-11 rounded-2xl flex items-center justify-center border transition-all ${
+                wishlisted ? 'bg-red-500 border-red-500 text-white' : 'bg-white border-[#1EBD87] text-[#1EBD87] hover:border-red-400 hover:text-red-500'
+              }`}
+            >
+              <Heart className={`h-5 w-5 ${wishlisted ? 'fill-current' : ''}`} />
+            </button>
+          </div>
           <p className="text-3xl font-bold text-[#1EBD87]">Rs. {product.price}</p>
 
           <div className="flex items-center gap-4">
@@ -134,7 +155,7 @@ export default function ProductDetailsClient({ product, relatedColors, content }
             </div>
           )}
 
-          <div className="flex items-center gap-4">
+          <div className="flex gap-3">
             <button
               onClick={handleAddToCart}
               className="flex-1 bg-[#1EBD87] text-white h-14 rounded-2xl font-bold hover:bg-[#17a876] hover:scale-[1.02] transition-all"
@@ -143,23 +164,6 @@ export default function ProductDetailsClient({ product, relatedColors, content }
                 <ShoppingCart className="h-5 w-5" />
                 Add to Cart
               </div>
-            </button>
-            <button
-              onClick={() => wishlisted ? removeFromWishlist(product._id) : addToWishlist({
-                id: product._id,
-                slug: product.slug,
-                title: product.title,
-                price: product.price,
-                image: product.images?.[0]?.url || '',
-                mainCategory: product.mainCategory,
-                subCategory: product.subCategory,
-                kg: product.kg ?? 1,
-              })}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center border transition-all ${
-                wishlisted ? 'bg-red-500 border-red-500 text-white' : 'bg-white border-gray-200 text-gray-400 hover:border-red-400 hover:text-red-500'
-              }`}
-            >
-              <Heart className={`h-5 w-5 ${wishlisted ? 'fill-current' : ''}`} />
             </button>
             <button
               onClick={() => {

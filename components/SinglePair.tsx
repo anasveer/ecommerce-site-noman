@@ -103,7 +103,7 @@ export default function ProductSectionSinglePair() {
   }
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
@@ -120,7 +120,7 @@ export default function ProductSectionSinglePair() {
           <div className="hidden lg:block">
             <Link
               href="/category/bedsheet/single-pair-bedsheet"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
+              className="px-5 py-3 rounded-full text-medium font-semibold bg-[#1EBD87] text-white border border-[#1EBD87] shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#17a876] transition-all duration-300"
             >
               View Single Pair Bedsheet <span className="inline-block ml-2">→</span>
             </Link>
@@ -173,7 +173,7 @@ export default function ProductSectionSinglePair() {
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
             href="/category/bedsheet/single-pair-bedsheet"
-            className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white border border-[#1EBD87]/40 shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#1EBD87] hover:text-white transition-all duration-300"
+            className="px-5 py-3 rounded-full text-medium font-semibold bg-[#1EBD87] text-white border border-[#1EBD87] shadow-[0_10px_30px_rgba(30,189,135,0.15)] hover:bg-[#17a876] transition-all duration-300"
           >
             View Single Pair Bedsheet <span className="inline-block ml-2">→</span>
           </Link>

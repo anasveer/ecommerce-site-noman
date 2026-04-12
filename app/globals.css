@@ -46,4 +46,16 @@ body {
   animation: bounce-slow 3s ease-in-out infinite;
 }
 
+@keyframes wave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.btn-wave {
+  background: linear-gradient(270deg, #1EBD87, #17a876, #0d9e6a, #1EBD87);
+  background-size: 300% 300%;
+  animation: wave 3s ease infinite;
+}
+
 

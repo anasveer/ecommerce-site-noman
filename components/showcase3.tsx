@@ -3,13 +3,13 @@ import { CheckCircle2 } from 'lucide-react';
 
 const FabricShowcaseDetail = () => {
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
           {/* Left: Content Section */}
           <div className="flex-1 space-y-8 animate-in fade-in slide-in-from-left duration-1000">
-            <h2 className="text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-extrabold text-gray-800 leading-tight">
               The Luxury of <br />
               <span className="text-[#1EBD87] italic">Crystal Cotton</span>
             </h2>

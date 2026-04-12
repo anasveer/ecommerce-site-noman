@@ -77,7 +77,12 @@ export default function MyOrdersPage() {
   return (
     <div className="min-h-screen bg-[#f8fafc] py-10 px-4 mt-20 relative">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-slate-900 mb-6">My Orders History</h1>
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">My Orders History</h1>
+        <p className="text-sm mb-6">
+          <span className="text-red-500 font-semibold">Enter the same phone number</span>
+          <span className="text-gray-700"> you used during checkout — </span>
+          <span className="text-[#1EBD87] font-semibold">your order details will appear instantly.</span>
+        </p>
 
         <div className="mb-8 flex gap-4">
           <input
@@ -199,6 +204,30 @@ export default function MyOrdersPage() {
             </div>
           ))}
         </div>
+        {/* Status Guide Card */}
+        <div className="mt-10 bg-white border border-[#1EBD87]/20 rounded-2xl p-6 shadow-[0_4px_20px_rgba(30,189,135,0.08)]">
+          <div className="flex items-center justify-between flex-wrap gap-3 mb-5">
+            <h3 className="text-gray-800 font-bold text-lg">Order Status Guide</h3>
+            <a href="/docs" className="inline-flex items-center gap-2 bg-[#1EBD87] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#17a876] transition-colors">
+              View Docs →
+            </a>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <p className="text-amber-700 font-bold text-sm mb-1">🕐 Pending</p>
+              <p className="text-amber-600 text-xs leading-relaxed">Your order has been placed successfully. We are processing and preparing your parcel.</p>
+            </div>
+            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
+              <p className="text-sky-700 font-bold text-sm mb-1">🚚 On the Way</p>
+              <p className="text-sky-600 text-xs leading-relaxed">Your parcel has been dispatched and is currently on its way to you.</p>
+            </div>
+            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+              <p className="text-emerald-700 font-bold text-sm mb-1">✅ Completed</p>
+              <p className="text-emerald-600 text-xs leading-relaxed">Your parcel has been successfully delivered. Order is complete from our side.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       {/* --- IMAGE VIEW MODAL --- */}

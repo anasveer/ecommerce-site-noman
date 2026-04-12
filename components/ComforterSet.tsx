@@ -40,15 +40,15 @@ export default async function ProductSectionComforterSet() {
   const products: Product[] = await getProducts();
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header Section */}
         <div className="flex justify-between items-end mb-12 gap-4 flex-wrap">
           <div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1EBD87] mb-2">
-              Comforter Set <span className="text-[#1EBD87]">Now</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
+              Comforter Set <span className="text-[#1EBD87]">Collection</span>
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-500">
               Explore our latest Comforter Set collection
             </p>
           </div>
@@ -57,9 +57,9 @@ export default async function ProductSectionComforterSet() {
           <div className="hidden lg:block">
             <Link
               href="/category/bedsheet/comforter-set"
-              className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white/10 backdrop-blur-lg border border-[#1EBD87] shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+              className="btn-wave px-5 py-3 rounded-full text-sm font-semibold text-white shadow-[0_10px_30px_rgba(30,189,135,0.3)] transition-all duration-300"
             >
-              View Comforter Set <span className="inline-block ml-2 arrow-shift">→</span>
+              View Comforter Set <span className="inline-block ml-2">→</span>
             </Link>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default async function ProductSectionComforterSet() {
         <div className="mt-10 lg:hidden flex justify-center">
           <Link
             href="/category/bedsheet/comforter-set"
-            className="px-5 py-3 rounded-full text-medium font-semibold text-[#1EBD87] bg-white/10 backdrop-blur-lg border border-[#1EBD87] shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:bg-white/20 transition-all duration-300 animate-pulse"
+            className="btn-wave px-5 py-3 rounded-full text-sm font-semibold text-white shadow-[0_10px_30px_rgba(30,189,135,0.3)] transition-all duration-300"
           >
             View Comforter Set <span className="inline-block ml-2">→</span>
           </Link>

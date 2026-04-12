@@ -1,7 +1,36 @@
 import { dbConnect } from "@/lib/mongodb";
 import { ProductModel } from "@/app/model/Product";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import ProductDetailsClient from "../../../../components/ProductDetailsClient";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  await dbConnect();
+  const { slug } = await params;
+  const product = await ProductModel.findOne({ slug }).lean();
+  if (!product) return { title: 'Product Not Found | Universal Bedding' };
+
+  const image = (product.images as any[])?.[0]?.url || '/logo.png';
+  return {
+    title: `${product.title} | Universal Bedding Pakistan`,
+    description: `Buy ${product.title} at Universal Bedding Pakistan. Premium quality ${product.subCategory?.replace(/-/g, ' ')} with lifetime colour guarantee. Rs. ${product.price}. Fast delivery across Pakistan.`,
+    keywords: [product.title, product.subCategory?.replace(/-/g, ' ') || '', 'bedsheet pakistan', 'universal bedding', 'premium bedding pakistan'],
+    alternates: { canonical: `https://universalbedding.pk/products/${slug}` },
+    openGraph: {
+      title: `${product.title} | Universal Bedding`,
+      description: `Premium ${product.subCategory?.replace(/-/g, ' ')} - Rs. ${product.price}. Lifetime colour guarantee.`,
+      url: `https://universalbedding.pk/products/${slug}`,
+      images: [{ url: image, alt: product.title }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: product.title,
+      description: `Rs. ${product.price} | Premium ${product.subCategory?.replace(/-/g, ' ')} at Universal Bedding Pakistan`,
+      images: [image],
+    }
+  };
+}
 
 const CONTENT_MAP: any = {
   "single-pair-bedsheet": {

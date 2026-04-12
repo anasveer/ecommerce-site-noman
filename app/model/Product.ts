@@ -10,7 +10,7 @@ const ProductSchema = new Schema({
   title: { type: String, required: true, trim: true },
   slug: { type: String, required: true, unique: true, trim: true },
   price: { type: Number, required: true, min: 0 },
-  barcode: { type: String, required: true, index: true }, // Search optimized
+  barcode: { type: String, required: true }, // Search optimized
   mainCategory: { type: String, required: true, enum: ["fabric", "bedsheet"] },
   subCategory: { type: String, enum: ["comforter-set", "3pcs-bedsheet", "single-pair-bedsheet", "water-proof-mattress-cover", ""], default: "" },
   fabric: { type: String, default: "" }, // Fabric type for bedsheets
@@ -18,7 +18,6 @@ const ProductSchema = new Schema({
   images: { type: [ProductImageSchema], default: [] },
 }, { timestamps: true });
 
-ProductSchema.index({ slug: 1 });
 ProductSchema.index({ barcode: 1 });
 ProductSchema.index({ fabric: 1 });
 ProductSchema.index({ title: "text" }); // Text search enabled

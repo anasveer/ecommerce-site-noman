@@ -34,7 +34,7 @@ const CartPage = () => {
 
         <div className="space-y-4">
           {items.map((item) => (
-            <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 flex gap-3 sm:gap-5 items-center shadow-sm">
+            <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-2 sm:p-4 flex gap-3 sm:gap-5 items-center shadow-sm">
               <img
                 src={item.image}
                 alt={item.title}
@@ -42,7 +42,8 @@ const CartPage = () => {
               />
               <div className="flex-1 min-w-0">
                 <h2 className="text-sm sm:text-base font-semibold text-gray-800 line-clamp-2">{item.title}</h2>
-                <p className="text-gray-600 text-sm mt-0.5">Code: {item.barcode}</p>
+                {item.subCategory && <p className="text-[#E87F24] text-xs font-semibold uppercase tracking-wide mt-0.5">{item.subCategory.replace(/-/g, ' ')}</p>}
+                {item.barcode && <p className="text-gray-700 text-xs mt-0.5">Code: {item.barcode}</p>}
                 <p className="text-[#1EBD87] font-bold text-base mt-1">Rs. {item.price}</p>
                 <div className="flex items-center gap-2 mt-2">
                   <button

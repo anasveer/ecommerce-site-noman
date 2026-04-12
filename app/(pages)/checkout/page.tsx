@@ -239,7 +239,16 @@ export default function CheckoutPage() {
                   />
                   {screenshotError && <p className="text-red-500 text-sm mt-2">{screenshotError}</p>}
                   {screenshotPreview && (
-                    <img src={screenshotPreview} alt="Proof preview" className="mt-2 max-h-32 rounded-lg border border-gray-200" />
+                    <div className="relative mt-2 inline-block">
+                      <img src={screenshotPreview} alt="Proof preview" className="max-h-32 rounded-lg border border-gray-200" />
+                      <button
+                        type="button"
+                        onClick={() => { setScreenshotFile(null); setScreenshotPreview(null); }}
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs hover:bg-red-600 transition-colors shadow-md"
+                      >
+                        ✕
+                      </button>
+                    </div>
                   )}
                 </div>
               )}

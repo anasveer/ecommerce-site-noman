@@ -43,7 +43,7 @@ const QualityShowcase = () => {
           <div className="flex-1 relative w-full max-w-xl">
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#1EBD87]/10 blur-[100px] rounded-full"></div>
             
-            <div className="relative z-10 rounded-[40px] overflow-hidden border border-gray-200 shadow-xl h-[420px] lg:h-[500px]">
+            <div className="relative z-10 rounded-[40px] overflow-hidden border border-gray-200 shadow-xl h-[380px] lg:h-[500px]">
               <img 
                 src="/s3.png" 
                 alt="Main Fabric" 
